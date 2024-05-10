@@ -3,6 +3,7 @@
 import SampleNode1 from "@/components/slide-parts/sample-node1";
 
 import AnimeManager from "@/lib/anime-manager";
+import DescriptionManager from "@/lib/description-manager";
 import Image from "next/image";
 import anime from 'animejs/lib/anime.es.js';
 import { useEffect, useId, useState } from "react";
@@ -12,16 +13,19 @@ import { useEffect, useId, useState } from "react";
 export default function Home() {
 
   const animeSequence = [
-    { "action": "breakpoint" },
-    { "action": "swap", "selectorA": ".sample-node .test1", "selectorB": ".sample-node .test3" },
-    { "action": "breakpoint" },
-    { "action": "swap", "selectorA": ".sample-node .test1", "selectorB": ".sample-node .test2" },
-    { "action": "breakpoint" },
-    { "action": "swap", "selectorA": ".sample-node .test1", "selectorB": ".sample-node .test4" },
-    { "action": "breakpoint" },
-    { "action": "swap", "selectorA": ".sample-node .test1", "selectorB": ".sample-node .test4" },
-    { "action": "swap", "selectorA": ".sample-node .test1", "selectorB": ".sample-node .test4" },
-    { "action": "breakpoint" },
+    {"action": "break"},
+    {"action": "swap", "sel1": ".test1", "sel2": ".test3"},
+    {"action": "swap-fail", "sel1": ".test1", "sel2": ".test3"},
+    {"action": "light", "sel": ".test1"},
+    {"action": "color", "sel": ".test1", "color": "red"},
+  ];
+
+  const descriptionSequence = [
+    '最初の説明です',
+    '次の説明です',
+    'その次の説明です',
+    '次で説明は終わりです',
+    '最後の説明です',
   ];
   let inited = false;
   
@@ -29,6 +33,7 @@ export default function Home() {
   
   // https://stackoverflow.com/questions/73149606/why-is-my-usestate-variable-initialized-every-time-my-react-components-is-render
   let [am, setAM] = useState(() => new AnimeManager(animeSequence));
+  let [dm, setDM] = useState(() => new DescriptionManager(descriptionSequence));
 
   const pressNext = () => {
     if(am.hasNext()) {
@@ -68,7 +73,7 @@ export default function Home() {
           </div>
         </div>
         <div className="slide-text p-4 w-full border">
-          <h1>{slideNumber}</h1>
+          <h1>{dm.readByIndex(slideNumber)}</h1>
         </div>
         <div className="slide-control">
           <button className="prev p-1 m-1 border"

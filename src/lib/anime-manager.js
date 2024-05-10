@@ -6,7 +6,8 @@ import { sleep } from '@/lib/utils';
 class AnimeManager {
   constructor(animeSequence = []) {
     this.animeSequence = animeSequence;
-    this.currentAnimeIndex = 0;
+    this.currentAnimeIndex = -1;
+    this.descCallback = null;
     
     // 絶対値によるアニメ開始位置修正値
     this.fixNodeOffsets = {};
@@ -18,21 +19,19 @@ class AnimeManager {
   }
 
   // addSwapAnimation(selectorA, selectorB) {
-  //   this.animeSequence.push({ "action": "swap", "selectorA": selectorA, "selectorB": selectorB });
+  //   this.animeSequence.push({ "action": "swap", "sel1": selectorA, "sel2": selectorB });
   // }
 
   // addBreakpoint() {
   //   this.animeSequence.push({ "action": "breakpoint" });
   // }
 
+  setDescCallback(callback) {
+    this.descCallback = callback;
+  }
+
   replay() {
-    while(this.hasPrev()) {
-      this.currentAnimeIndex--;
-      let anime = this.animeSequence[this.currentAnimeIndex];
-      if(anime.action === "breakpoint") {
-        return;
-      }
-    }
+    this.prev();
     this.next();
   }
 
@@ -43,7 +42,7 @@ class AnimeManager {
       this.currentAnimeIndex += step;
       let animeDict = this.animeSequence[this.currentAnimeIndex];
 
-      if(animeDict.action === "breakpoint") {
+      if(animeDict.action === "break") {
         break;
       }
 
@@ -54,10 +53,15 @@ class AnimeManager {
     for(let animeDict of animeQueue) {
       if(animeDict.action === "swap") {
         // swap
-        let duration = animeDict.duration || 500;
-        this.animeSwap(animeDict.selectorA, animeDict.selectorB, duration);
+        let duration = reverse ? 0 : animeDict.duration || 500;
+        this.animeSwap(animeDict.sel1, animeDict.sel2, duration);
         
         await sleep(duration);
+      }
+      
+      if(animeDict.action === "desc") {
+        // desc
+        this.descCallback(animeDict.body);
       }
     }
   }
@@ -71,14 +75,14 @@ class AnimeManager {
   }
 
   hasPrev() {
-    return this.currentAnimeIndex > 0;
+    return this.currentAnimeIndex > -1;
   }
 
   // completeTranslateResult(animeDicts = []) {
   //   animeDicts.forEach((animeDict) => {
   //     if(animeDict.action === "swap") {
-  //       let selectorA = animeDict.selectorA;
-  //       let selectorB = animeDict.selectorB;
+  //       let selectorA = animeDict.sel1;
+  //       let selectorB = animeDict.sel2;
   //       let offsetAX = this.getNodeOffset(selectorA).x;
   //       let offsetAY = this.getNodeOffset(selectorA).y;
   //       let offsetBX = this.getNodeOffset(selectorB).x;
