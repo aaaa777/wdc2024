@@ -1,8 +1,7 @@
 "use client"
 
 import SampleNode1 from "@/components/slide-parts/sample-node1";
-import TimelinePlayer from "@/lib/timeline-player";
-import SlidePlayer from "@/lib/slide-player";
+
 import AnimeManager from "@/lib/anime-manager";
 import Image from "next/image";
 import anime from 'animejs/lib/anime.es.js';
@@ -27,18 +26,15 @@ export default function Home() {
   let inited = false;
   
   let [slideNumber, setSlideNumber] = useState(0);
-  let [pressButtonCount, setPressButtonCount] = useState(0);
   
   // https://stackoverflow.com/questions/73149606/why-is-my-usestate-variable-initialized-every-time-my-react-components-is-render
-  const createAM = () => new AnimeManager(animeSequence);
-  let [am, setAM] = useState(() => createAM());
+  let [am, setAM] = useState(() => new AnimeManager(animeSequence));
 
   const pressNext = () => {
     if(am.hasNext()) {
       setSlideNumber(slideNumber + 1);
     }
     am.next();
-    // setPressButtonCount(pressButtonCount + 1);
   }
   
   const pressPrev = () => {
@@ -46,34 +42,19 @@ export default function Home() {
       setSlideNumber(slideNumber - 1);
     }
     am.prev();
-    // setPressButtonCount(pressButtonCount + 1);
   }
 
   const pressReplay = () => { am.replay(); }
   
-  // tlp.addSwapAnimation('.sample-node .test1', '.sample-node .test3', 1000, 0, 0, 0, 0);
-  // tlp.addSwapAnimation('.sample-node .test1', '.sample-node .test3', 1000, 0, 0, 0, 0);
-  
+
   useEffect(() => {
     // strict modeだとuseEffectが2回呼ばれる
     if (inited) return;
-    // setAM(() => createAM());
-    
-    console.log('useEffect');
-    // tlp.addSwapAnimation('.sample-node .test1', '.sample-node .test2', 1000, 0, 0, 0, 0);
-    // tlp.addSwapAnimation('.sample-node .test1', '.sample-node .test3', 1000, 0, 0, 0, 0);
-    // tlp.addSwapAnimation('.sample-node .test1', '.sample-node .test4', 1000, 0, 0, 0, 0);
-    
     document.querySelector('.test').onclick = () => {
-      setPressButtonCount(pressButtonCount + 1);
-      // sp.swapElementWithAnimation('.sample-node .test1', '.sample-node .test2');
+      console.log('test');
     }
     inited = true;
   }, []);
-
-  useEffect(() => {
-    // setSlideNumber(tlp.timelineCursor);
-  }, [pressButtonCount]);
 
   return (
     <main className="p-4 w-full">
