@@ -7,4 +7,4 @@
 - [ ] Github pagesとActionsの設定 
 
 ## Note
-- animeSequenceの{"action": "break", "desc": "説明"}の説明は一つ前のbreakから離れたタイミングで更新される仕様です
+- animeSequenceの{"action": "break", "desc": "説明"}の説明は一つ前のbreakから離れたタイミングで適用される仕様です
