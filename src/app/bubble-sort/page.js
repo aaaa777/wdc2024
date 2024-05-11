@@ -15,40 +15,28 @@ import { set } from "animejs";
 export default function Home() {
 
   const animeSequence = [
-    {"action": "desc", "body": "バブルソートの説明をします 左から順に隣接要素を比較し、大きい方を右にします"},
-    {"action": "break"},
-    {"action": "desc", "body": "30>20なので交換します"},
+    {"action": "break", "desc": "バブルソートの説明をします"},
+    {"action": "break", "desc": "バブルソートは隣り合う要素を比較して、順番が逆なら交換します"},
+    {"action": "break", "desc": "これを繰り返して、全ての要素が順番通りになるまで続けます"},
     {"action": "swap", "sel1": ".e1", "sel2": ".e2"},
-    {"action": "break"},
-    {"action": "desc", "body": "30<40なので交換しません"},
-    {"action": "swap", "sel1": ".e1", "sel2": ".e3"},
-    {"action": "swap", "sel1": ".e1", "sel2": ".e3"},
-    {"action": "break"},
-    {"action": "desc", "body": "40>10なので交換します"},
+    {"action": "break", "desc": "30>20なので交換します"},
+    {"action": "swap-fail", "sel1": ".e1", "sel2": ".e3"},
+    {"action": "break", "desc": "30<100なので交換しません"},
     {"action": "swap", "sel1": ".e3", "sel2": ".e4"},
-    {"action": "break"},
-    {"action": "desc", "body": "40>25なので交換します"},
+    {"action": "break", "desc": "100>10なので交換します"},
     {"action": "swap", "sel1": ".e3", "sel2": ".e5"},
-    {"action": "break"},
-    {"action": "desc", "body": "これで1番大きい値が一番右に移動しました"},
-    {"action": "break"},
-    {"action": "desc", "body": "もう一度繰り返します"},
-    {"action": "swap", "sel1": ".e1", "sel2": ".e2"},
-    {"action": "swap", "sel1": ".e1", "sel2": ".e2"},
+    {"action": "break", "desc": "100>25なので交換します"},
+    {"action": "break", "desc": "これで1番大きい値が一番右に移動しました"},
+    {"action": "swap-fail", "sel1": ".e1", "sel2": ".e2"},
     {"action": "swap", "sel1": ".e1", "sel2": ".e4"},
     {"action": "swap", "sel1": ".e1", "sel2": ".e5"},
-    {"action": "break"},
-    {"action": "desc", "body": "これで2番目に大きい値が決まりました"},
-    {"action": "break"},
-    {"action": "desc", "body": "全ての順番が決まるまで繰り返します"},
+    {"action": "break", "desc": "もう一度繰り返します"},
+    {"action": "break", "desc": "これで2番目に大きい値が決まりました"},
     {"action": "swap", "sel1": ".e2", "sel2": ".e4"},
-    {"action": "swap", "sel1": ".e2", "sel2": ".e5"},
-    {"action": "swap", "sel1": ".e2", "sel2": ".e5"},
-    {"action": "swap", "sel1": ".e2", "sel2": ".e4"},
-    {"action": "swap", "sel1": ".e2", "sel2": ".e4"},
-    {"action": "break"},
-    {"action": "desc", "body": "これでソートが完了しました"},
-    {"action": "break"},
+    {"action": "swap-fail", "sel1": ".e2", "sel2": ".e5"},
+    {"action": "swap-fail", "sel1": ".e2", "sel2": ".e4"},
+    {"action": "break", "desc": "全ての順番が決まるまで繰り返します"},
+    {"action": "break", "desc": "これでソートが完了しました"},
   ];
 
   let inited = false;
@@ -80,7 +68,7 @@ export default function Home() {
     // strict modeだとuseEffectが2回呼ばれる
     if (inited) return;
     am.setDescCallback(setSlideDescription);
-    am.next();
+    am.init();
     document.querySelector('.test').onclick = () => {
       console.log('test');
     }
@@ -91,11 +79,11 @@ export default function Home() {
   return (
     <main className="p-4 w-full">
       <div className="slide-area">
-        <div className="slide-video p-4 h-600 border">
+        <div className="slide-video p-4 border"> {/*TODO:高さ指定を追加する*/}
           <div className="flex sort-elements">
             <SortBlock1 className={`e1`} percent={30}/>
             <SortBlock1 className={`e2`} percent={20}/>
-            <SortBlock1 className={`e3`} percent={40}/>
+            <SortBlock1 className={`e3`} percent={100}/>
             <SortBlock1 className={`e4`} percent={10}/>
             <SortBlock1 className={`e5`} percent={25}/>
           </div>

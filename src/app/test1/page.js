@@ -16,7 +16,7 @@ export default function Home() {
     {"action": "break"},
     {"action": "swap", "sel1": ".test1", "sel2": ".test3"},
     {"action": "swap-fail", "sel1": ".test1", "sel2": ".test3"},
-    {"action": "light", "sel": ".test1"},
+    {"action": "spot", "sel": ".test1"},
     {"action": "color", "sel": ".test1", "color": "red"},
   ];
 
