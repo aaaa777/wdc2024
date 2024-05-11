@@ -137,7 +137,6 @@ class AnimeManager {
     // アニメーションの実行
     for(let translateResult of translateResults) {
       // 途中でアニメーションをキャンセルされた場合
-      console.log(this.runningAnimeId, currentAnimeId)
       if(this.runningAnimeId !== currentAnimeId) break;
 
       // swap
