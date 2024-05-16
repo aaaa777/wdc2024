@@ -118,7 +118,7 @@ export default function Home() {
           <p className="text-4xl py-5">ソートアルゴリズム</p>
           <div className="text-center grid grid-cols-3 *:text-3xl *:bg-blue-300 *:border-2 *:border-blue-500 *:mx-10 *:my-5 *:p-5 *:rounded-xl">
             <div><Link href={"/bubble-sort"}>バブルソート</Link></div>
-            <div><Link href={"/"}>algo2</Link></div>
+            <div><Link href={"/shaker-sort"}>シェーカーソート</Link></div>
             <div><Link href={"/"}>algo3</Link></div>
             <div><Link href={"/"}>algo4</Link></div>
             <div><Link href={"/"}>algo5</Link></div>
