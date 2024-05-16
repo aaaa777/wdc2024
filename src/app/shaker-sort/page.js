@@ -14,7 +14,6 @@ export default function Home() {
     {"action": "break", "desc": "シェーカーソートの説明をします\nシェーカーソートはバブルソートを改良したもので効率が少し良くなっています"},
     {"action": "break", "desc": "シェーカーソートではバブルソートと同じように隣り合う要素を比較して、順番が逆なら交換していきます\nバブルソートでは毎回左からソートをしましたが、シェーカーソートでは往復するようにソートを行っていきます"},
     {"action": "swap", "sel1": ".e1", "sel2": ".e2"},
-    // {"action": "flash", "sel": ".expl1", "color": "#F33", "loop": true},
     {"action": "break", "desc": "まずは左端から比較していきます\n30と20は30の方が大きいので交換します"},
     {"action": "swap-fail", "sel1": ".e1", "sel2": ".e3"},
     {"action": "break", "desc": "30<90なので交換しません"},
