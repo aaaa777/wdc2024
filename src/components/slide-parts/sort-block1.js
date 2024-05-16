@@ -1,5 +1,8 @@
 'use client';
 
+import theme from "@/lib/default-theme";
+import { Box } from "@mui/material";
+
 const SortBlock1 = (props) => {
   const calcStyle = (percent) => {
     return {
@@ -7,12 +10,18 @@ const SortBlock1 = (props) => {
     };
   }
   return (
-    <div className={`content-end sample-node1 h-72 w-20 m-2 ${props.className}`}>
-      <div className="h-60 content-end">
-        <div className={`bg-black`} style={calcStyle(props.percent)}/>
+    <div className={`flex-1 content-end sample-node1 min-w-10 flex flex-col p-3 ${props.className}`}>
+      <div className="h-full content-end">
+        <Box className={`graph`}
+          border={0}
+          borderRadius={1}
+          boxShadow={3}
+          sx={{ bgcolor: theme.palette.primary.main }}
+          style={calcStyle(props.percent)}
+        />
       </div>
-      <div className="flex justify-center">
-        <div>{props.percent}</div>
+      <div className="flex justify-center text-4xl">
+        <div style={{overflow: "visible"}}>{props.percent}</div>
       </div>
     </div>
   );

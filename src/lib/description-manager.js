@@ -1,3 +1,5 @@
+// 廃止
+
 class DescriptionManager {
   constructor(descriptionSequence = []) {
     this.descriptionSequence = descriptionSequence;
