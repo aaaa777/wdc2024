@@ -122,13 +122,12 @@ export default function Home() {
             <div><Link href={"/bubble-sort"}>バブルソート</Link></div>
             <div><Link href={"/shaker-sort"}>シェーカーソート</Link></div>
             <div><Link href={"/comb-sort"}>コムソート</Link></div>
-            <div><Link href={"/"}>algo4</Link></div>
+            <div><Link href={"/insertion-sort"}>挿入ソート</Link></div>
             <div><Link href={"/"}>algo5</Link></div>
             <div><Link href={"/"}>algo6</Link></div>
             <div><Link href={"/"}>algo3</Link></div>
             <div><Link href={"/"}>algo4</Link></div>
             <div><Link href={"/"}>algo5</Link></div>
-            <div><Link href={"/"}>algo6</Link></div>
           </div>
         </div>
 {/*
