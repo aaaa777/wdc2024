@@ -118,7 +118,7 @@ export default function Home() {
           <p className="text-4xl py-5">ソートアルゴリズム</p>
           <div className="text-center grid grid-cols-3 *:text-3xl *:bg-blue-300 *:border-2 *:border-blue-500 *:mx-10 *:my-5 *:p-5 *:rounded-xl">
             <div><Link href={"/bubble-sort"}>バブルソート</Link></div>
-            <div><Link href={"/merge-sort"}>マージソート</Link></div>
+            <div><Link href={"/"}>algo2</Link></div>
             <div><Link href={"/"}>algo3</Link></div>
             <div><Link href={"/"}>algo4</Link></div>
             <div><Link href={"/"}>algo5</Link></div>
@@ -139,8 +139,8 @@ export default function Home() {
         <div className="w-full px-20">
           <p className="text-4xl py-5">暗号化</p>
           <div className="text-center grid grid-cols-3 *:text-3xl *:bg-yellow-300 *:border-2 *:border-yellow-500 *:mx-10 *:my-5 *:p-5 *:rounded-xl">
-            <div><Link href={"/"}>公開鍵</Link></div>
-            <div><Link href={"/"}>暗号鍵</Link></div>
+            <div><Link href={"/"}>公開鍵暗号</Link></div>
+            <div><Link href={"/"}>暗号鍵暗号</Link></div>
             <div><Link href={"/"}>DES</Link></div>
             <div><Link href={"/"}>RSA</Link></div>
             <div><Link href={"/"}>楕円曲線暗号</Link></div>
