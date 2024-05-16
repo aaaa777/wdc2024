@@ -103,7 +103,7 @@ export default function Home() {
       
       <div id="contents" className="absolute top-0 left-0 w-full ">    
         
-        <div className="w-full mb-10 p-32 text-center  bg-white bg-opacity-75">
+        <div className="w-full mb-10 p-28 text-center  bg-white bg-opacity-75">
           <div className="text-6xl m-5">
           {/*Algorithm Library*/}
           Sort Museum
@@ -116,18 +116,13 @@ export default function Home() {
         </div>
 
         
-        <div className="w-full px-20">
-          <p className="text-4xl py-5">ソートアルゴリズム</p>
+        <div className="w-full px-20 py-24">
+          {/*<p className="text-4xl py-5">ソートアルゴリズム</p>*/}
           <div className="text-center grid grid-cols-3 *:text-3xl *:bg-blue-300 *:border-2 *:border-blue-500 *:mx-10 *:my-5 *:p-5 *:rounded-xl">
             <div><Link href={"/bubble-sort"}>バブルソート</Link></div>
             <div><Link href={"/shaker-sort"}>シェーカーソート</Link></div>
             <div><Link href={"/comb-sort"}>コムソート</Link></div>
             <div><Link href={"/insertion-sort"}>挿入ソート</Link></div>
-            <div><Link href={"/"}>algo5</Link></div>
-            <div><Link href={"/"}>algo6</Link></div>
-            <div><Link href={"/"}>algo3</Link></div>
-            <div><Link href={"/"}>algo4</Link></div>
-            <div><Link href={"/"}>algo5</Link></div>
           </div>
         </div>
 {/*
@@ -153,7 +148,7 @@ export default function Home() {
         </div>
   */}
 
-        <div className="w-full mt-10 p-10 text-center bg-white bg-opacity-75">
+        <div className="w-full mt-10 p-8 text-center bg-white bg-opacity-75">
         © 2024 Yuma SAWAI, Sora KAMIMURA
         </div>
 
