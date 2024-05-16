@@ -181,6 +181,8 @@ class AnimeManager {
     return this.currentAnimeIndex > 0;
   }
 
+
+  // スワップ失敗アニメーションの座標を計算
   calcSwapFailTranslate(selectorA, selectorB) {
     let offsetAX = this.getNodeOffset(selectorA).x;
     let offsetAY = this.getNodeOffset(selectorA).y;
@@ -207,6 +209,7 @@ class AnimeManager {
     };
   }
 
+  // スワップ失敗アニメーションを実行
   animeSwapFail(selectorA, selectorB, duration, translateResult) {
     let { 
       currentTranslateAX,
@@ -261,7 +264,7 @@ class AnimeManager {
     });
   }
   
-
+  // 座標をもとにスワップアニメーションの座標を計算
   calcSwapTranslate(selectorA, selectorB) {
     let offsetAX = this.getNodeOffset(selectorA).x;
     let offsetAY = this.getNodeOffset(selectorA).y;
@@ -292,6 +295,7 @@ class AnimeManager {
     };
   }
 
+  // スワップアニメーションを実行
   animeSwap(selectorA, selectorB, duration, translateResult) {
     const {
       currentTranslateAX,
@@ -335,6 +339,8 @@ class AnimeManager {
 
   }
 
+  // ノードの移動修正値の絶対座標を取得
+  // 常にアニメーション後の座標を指す
   getNodeOffset(selector) {
     if(this.fixNodeOffsets[selector]) {
       return this.fixNodeOffsets[selector];
@@ -343,10 +349,14 @@ class AnimeManager {
     return { x: node.offsetLeft, y: node.offsetTop };
   }
 
+  // ノードの移動修正値の絶対座標をセット
+  // 常にアニメーション後の座標を指す
   setNodeOffset(selector, x, y) {
     this.fixNodeOffsets[selector] = { x: x, y: y };
   }
 
+  // ノードのTranslate値を取得
+  // アニメーション後の値を指す
   getNodeTranslate(selector) {
     if(this.fixNodeTranslates[selector]) {
       return this.fixNodeTranslates[selector];
@@ -354,6 +364,8 @@ class AnimeManager {
     return {x: 0, y: 0};
   }
 
+  // ノードのTranslate値を設定
+  // アニメーション後の値を指す
   setNodeTranslate(selector, x, y) {
     this.fixNodeTranslates[selector] = {x: x, y: y};
   }
