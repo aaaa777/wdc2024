@@ -40,7 +40,6 @@ export default function Home() {
     {"action": "break", "desc": "20>10なので交換します"},
     {"action": "colors", "sel": ".e4 .graph", "colors": [theme.palette.primary.main, theme.palette.primary.disabled]},
     {"action": "break", "desc": "右から左へ比較を繰り返すことで一番小さい値が一番左に移動しました"},
-    {"action": "break", "desc": "全ての順番が決まるまで繰り返します"},
     {"action": "swap-fail", "sel1": ".e1", "sel2": ".e2"},
     {"action": "swap", "sel1": ".e1", "sel2": ".e6"},
     {"action": "swap", "sel1": ".e1", "sel2": ".e5"},
