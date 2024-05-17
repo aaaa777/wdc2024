@@ -103,22 +103,25 @@ export default function Home() {
       
       <div id="contents" className="absolute top-0 left-0 min-h-screen w-full flex flex-col">    
         
-        <div className="w-full mb-10 p-28 text-center  bg-white bg-opacity-75">
-          <div className="text-6xl m-5">
+        <div className="w-full md:mb-10 md:p-28 pt-6 text-center  bg-white bg-opacity-75">
+          <div className="text-6xl m-1 md:m-5">
           {/*Algorithm Library*/}
           Sort Museum
           </div>
           
-          <div className="text-3xl "> 
+          <div className="text-3xl py-4"> 
           {/*様々なアルゴリズムをアニメーションで可視化しています*/}
           様々なソートアルゴリズムをアニメーションで可視化しています
           </div>
         </div>
 
         
-        <div className="w-full px-20 py-24">
+        <div className="w-full md:px-20 md:py-24">
           {/*<p className="text-4xl py-5">ソートアルゴリズム</p>*/}
-          <div className="text-center grid grid-cols-3 *:text-3xl *:bg-blue-300 *:border-2 *:border-blue-500 *:mx-10 *:my-5 *:p-5 *:rounded-xl">
+          {/* <div className="">
+            
+          </div> */}
+          <div className="text-center grid md:grid-cols-3  *:text-3xl *:bg-blue-300 *:border-2 *:border-blue-500 *:mx-10 *:my-5 *:p-5 *:rounded-xl">
             <div><Link href={"./bubble-sort"}>バブルソート</Link></div>
             <div><Link href={"./shaker-sort"}>シェーカーソート</Link></div>
             <div><Link href={"./comb-sort"}>コムソート</Link></div>
