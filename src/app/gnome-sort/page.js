@@ -39,7 +39,7 @@ export default function Home() {
   
   return (
     <ThemeProvider theme={theme}>
-      <SlidePage title="挿入ソート" animeSequence={animeSequence}>
+      <SlidePage title="ノームソート" animeSequence={animeSequence}>
         <div className="flex h-full w-full sort-elements content-center">
           <SortBlock1 percent={30} className="e1"/>
           <SortBlock1 percent={20} className="e2"/>
