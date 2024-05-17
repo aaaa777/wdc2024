@@ -34,8 +34,8 @@ export default function Home() {
     {"action": "swap-fail", "sel1": ".e2", "sel2": ".e5"},
     {"action": "colors", "sel": ".e5 .graph", "colors": [theme.palette.primary.main, theme.palette.primary.disabled]},
     {"action": "swap-fail", "sel1": ".e2", "sel2": ".e4"},
-    {"action": "colors", "sel": ".e4 .graph", "colors": [theme.palette.primary.main, theme.palette.primary.disabled]},
     {"action": "colors", "sel": ".e2 .graph", "colors": [theme.palette.primary.main, theme.palette.primary.disabled]},
+    {"action": "colors", "sel": ".e4 .graph", "colors": [theme.palette.primary.main, theme.palette.primary.disabled]},
     {"action": "break", "desc": "全ての順番が決まるまで繰り返します"},
     {"action": "break", "desc": "これでソートが完了しました\n以上がバブルソートの流れになります"},
   ];
@@ -47,15 +47,15 @@ export default function Home() {
         <div className="m-auto  text-4xl">バブルソート</div>
       </div>
       <div className="w-5/6 justify-center m-auto">
-      <SlidePage animeSequence={animeSequence}>
-        <div className="flex h-full w-full sort-elements content-center">
-          <SortBlock1 percent={30} className="e1"/>
-          <SortBlock1 percent={20} className="e2"/>
-          <SortBlock1 percent={90} className="e3"/>
-          <SortBlock1 percent={10} className="e4"/>
-          <SortBlock1 percent={25} className="e5"/>
-        </div>
-      </SlidePage>
+        <SlidePage animeSequence={animeSequence}>
+          <div className="flex h-full w-full sort-elements content-center">
+            <SortBlock1 percent={30} className="e1"/>
+            <SortBlock1 percent={20} className="e2"/>
+            <SortBlock1 percent={90} className="e3"/>
+            <SortBlock1 percent={10} className="e4"/>
+            <SortBlock1 percent={25} className="e5"/>
+          </div>
+        </SlidePage>
       </div>
     </ThemeProvider>
   );

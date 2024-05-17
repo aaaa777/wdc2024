@@ -10,6 +10,7 @@ class AnimeManager {
     // this.animeSequence.unshift({"action": "break"});
     this.currentAnimeIndex = 0;
     this.currentAnimeTotalDuration = 0;
+    this.currentAnimeRangeDict = {};
     this.descCallback = null;
     
     // 絶対値によるアニメ開始位置修正値
@@ -84,7 +85,9 @@ class AnimeManager {
 
   async next(reverse = false, updateDesc = true) {
     let description = null;
+    // prev nextに関わらず現在のアニメーションを格納する配列
     const animeSequencePartial = [];
+    // prevから呼ばれた場合、前の状態に戻るためのアニメーションを格納する配列
     const reverseAnimeSequencePartial = [];
     const step = reverse ? -1 : 1;
 
@@ -208,7 +211,7 @@ class AnimeManager {
         if(animeDict.action === "colors") {
           // colors
           // console.log(animeDict.colors);
-          let duration = rev ? 0 : animeDict.duration || 5000;
+          let duration = rev ? 0 : animeDict.duration || 1000;
           translateResults.push({
             "action": "colors",
             "sel": animeDict.sel,
@@ -274,8 +277,6 @@ class AnimeManager {
           translateResult.translateResult,
           translateResult.startTime,
         );
-        
-        await sleep(translateResult.duration);
       }
       
       // swap fail
@@ -287,8 +288,6 @@ class AnimeManager {
           translateResult.translateResult,
           translateResult.startTime,
         );
-        
-        await sleep(translateResult.duration);
       }
       
       // spot
@@ -317,6 +316,7 @@ class AnimeManager {
       if(translateResult.action === "opacities") {
         this.animeChangeOpacity(translateResult.sel, translateResult.opacities, translateResult.duration);
       }
+      await sleep(translateResult.duration);
     }
   }
 
@@ -340,9 +340,17 @@ class AnimeManager {
 
   // プログレスバー位置を計算
   calcProgressBarPosition(startTime, duration, progress, totalDuration) {
-    console.log(startTime, duration, progress, totalDuration);
-    return progress * duration / totalDuration + startTime / totalDuration;
+    const result = ((progress * duration / 100) + startTime) / totalDuration * 100;
+    // console.log(startTime, duration, progress, totalDuration, result);
+    return result;
     return (startTime / totalDuration + progress * duration / 100) * (duration / totalDuration);
+  }
+
+  generateUpdateProgressBarFunc(sliderEle, startTime, duration, totalDuration) {
+    return (anim) => {
+      const progress = anim.progress;
+      sliderEle.value = this.calcProgressBarPosition(startTime, duration, progress, totalDuration);
+    }
   }
 
   // スワップ失敗アニメーションの座標を計算
@@ -390,7 +398,7 @@ class AnimeManager {
     let tl1 = anime.timeline({
       easing: 'easeInOutSine',
       update: function(anim) {
-        ele.value = calc(startTime, duration, tl1.progress, totalDuration);
+        ele.value = calc(startTime, duration, anim.progress, totalDuration);
       }
     }).add({
       targets: selectorA,
@@ -464,7 +472,7 @@ class AnimeManager {
   }
 
   // スワップアニメーションを実行
-  animeSwap(selectorA, selectorB, duration, translateResult, startTime = 0) {
+  animeSwap(selectorA, selectorB, duration, translateResult, startTime) {
     const {
       currentTranslateAX,
       currentTranslateAY,
@@ -476,14 +484,12 @@ class AnimeManager {
       translateBY,
     } = translateResult;
 
-    const ele = this.getSliderEle();
-    const calc = this.calcProgressBarPosition;
-    const totalDuration = this.currentAnimeTotalDuration;
     anime.timeline({
       easing: 'easeInOutSine',
-      update: function(anim) {
-        ele.value = calc(startTime, duration, anim.progress, totalDuration);
-      }
+      // update: function(anim) {
+      //   ele.value = calc(startTime, duration, anim.progress, totalDuration);
+      // }
+      update: this.generateUpdateProgressBarFunc(this.getSliderEle(), startTime, duration, this.currentAnimeTotalDuration),
     }).add({
       targets: selectorA,
       translateX: currentTranslateAX,
@@ -549,17 +555,12 @@ class AnimeManager {
   }
 
   // 背景色のアニメーションを実行
-  animeChangeBgColor(selector, colors, duration = 5000) {
-    const ele = this.getSliderEle();
-    const calc = this.calcProgressBarPosition;
-    const totalDuration = this.currentAnimeTotalDuration;
+  animeChangeBgColor(selector, colors, duration, startTime) {
     anime({
       targets: selector,
       backgroundColor: colors,
       duration: duration,
-      update: function(anim) {
-        ele.value = calc(0, duration, anim.progress, totalDuration);
-      }
+      update: this.generateUpdateProgressBarFunc(this.getSliderEle(), startTime, duration, this.currentAnimeTotalDuration),
     });
   }
 
