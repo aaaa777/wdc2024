@@ -103,7 +103,7 @@ export default function Home() {
       
       <div id="contents" className="absolute top-0 left-0 min-h-screen w-full flex flex-col">    
         
-        <div className="w-full md:mb-10 md:p-28 pt-6 text-center  bg-white bg-opacity-75">
+        <div className="w-full md:mb-10 md:p-28 pt-6 text-center  bg-white bg-opacity-50">
           <div className="text-6xl m-1 md:m-5">
           {/*Algorithm Library*/}
           Sort Museum
@@ -125,7 +125,7 @@ export default function Home() {
             <div><Link href={"./bubble-sort"}>バブルソート</Link></div>
             <div><Link href={"./shaker-sort"}>シェーカーソート</Link></div>
             <div><Link href={"./comb-sort"}>コムソート</Link></div>
-            <div><Link href={"./insertion-sort"}>挿入ソート</Link></div>
+            <div><Link href={"./gnome-sort"}>ノームソート</Link></div>
           </div>
         </div>
 {/*
@@ -151,7 +151,7 @@ export default function Home() {
         </div>
   */}
         <div className="spacer grow"></div>
-        <div className="w-full mt-10 p-8 text-center bg-white bg-opacity-75">
+        <div className="w-full mt-10 p-8 text-center bg-white bg-opacity-50">
         © 2024 Yuma SAWAI, Sora KAMIMURA
         </div>
 
