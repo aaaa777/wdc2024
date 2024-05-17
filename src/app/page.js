@@ -126,6 +126,8 @@ export default function Home() {
             <div><Link href={"./shaker-sort"}>シェーカーソート</Link></div>
             <div><Link href={"./comb-sort"}>コムソート</Link></div>
             <div><Link href={"./gnome-sort"}>ノームソート</Link></div>
+            <div><Link href={"./selection-sort"}>選択ソート</Link></div>
+            <div><Link href={"./bozo-sort"}>ボゾソート</Link></div>
           </div>
         </div>
 {/*
