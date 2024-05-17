@@ -98,10 +98,10 @@ export default function Home() {
 
   return (
     <main className="min-h-screen flex-col items-center justify-between">
-      <canvas id="canvas" className="relative w-full">
+      <canvas id="canvas" className="relative h-full w-full">
       </canvas>
       
-      <div id="contents" className="absolute top-0 left-0 w-full ">    
+      <div id="contents" className="absolute top-0 left-0 min-h-screen w-full flex flex-col">    
         
         <div className="w-full mb-10 p-28 text-center  bg-white bg-opacity-75">
           <div className="text-6xl m-5">
@@ -147,7 +147,7 @@ export default function Home() {
           </div>
         </div>
   */}
-
+        <div className="spacer grow"></div>
         <div className="w-full mt-10 p-8 text-center bg-white bg-opacity-75">
         © 2024 Yuma SAWAI, Sora KAMIMURA
         </div>
