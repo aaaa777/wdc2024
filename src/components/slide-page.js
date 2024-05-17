@@ -74,11 +74,11 @@ export default function SlidePage(props) {
 
   return (
     <div className="w-full">
-      <div className="slide-area h-screen p-6">
+      <div className="slide-area h-screen p-1 md:p-6">
         {/* 画面上半分 スライド部分 */}
         <div className="slide-video h-3/5 flex flex-col">
           <h1>{props.slideTitle}</h1>
-          <div className="w-full grow px-4 pt-8">
+          <div className="w-full grow px-1 pt-8">
             {props.children}
           </div>
         </div>

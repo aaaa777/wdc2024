@@ -11,17 +11,17 @@ import Link from "next/link";
 export default function Home() {
 
   const animeSequence = [
-    {"action": "break", "desc": "バブルソートの説明をします"},
-    {"action": "break", "desc": "バブルソートは隣り合う要素を比較して、順番が逆なら交換します\nこれを繰り返して、全ての要素が順番通りになるまで続けます"},
+    {"action": "break", "desc": "このページではバブルソートについて説明します"},
+    {"action": "break", "desc": "基本は隣り合う要素を比較して大きい方を交換する操作をします\nこれを繰り返し、全ての要素が順番通りになるまで続けます"},
     {"action": "swap", "sel1": ".e1", "sel2": ".e2"},
     // {"action": "flash", "sel": ".expl1", "color": "#F33", "loop": true},
-    {"action": "break", "desc": "まずは左端から比較していきます\n30と20は30の方が大きいので交換します"},
+    {"action": "break", "desc": "まずは左端から始めましょう\n30と20では30の方が大きいので大きい方が右になるように交換します"},
     {"action": "swap-fail", "sel1": ".e1", "sel2": ".e3"},
-    {"action": "break", "desc": "30<90なので交換しません"},
+    {"action": "break", "desc": "次に左から2番目を見てみましょう\n30 < 90なのでこれは交換しません"},
     {"action": "swap", "sel1": ".e3", "sel2": ".e4"},
-    {"action": "break", "desc": "90>10なので交換します"},
+    {"action": "break", "desc": "同様に続けます\n90 > 10なので交換します"},
     {"action": "swap", "sel1": ".e3", "sel2": ".e5"},
-    {"action": "break", "desc": "90>25なので交換します"},
+    {"action": "break", "desc": "90 > 25なので交換します"},
     {"action": "colors", "sel": ".e3 .graph", "colors": [theme.palette.primary.main, theme.palette.primary.disabled]},
     {"action": "break", "desc": "左から右へ比較を繰り返すことで1番大きい値が一番右に移動しました\nこれを繰り返して全ての要素を大きい順に並べます"},
     {"action": "swap-fail", "sel1": ".e1", "sel2": ".e2"},
@@ -37,7 +37,7 @@ export default function Home() {
     {"action": "colors", "sel": ".e4 .graph", "colors": [theme.palette.primary.main, theme.palette.primary.disabled]},
     {"action": "colors", "sel": ".e2 .graph", "colors": [theme.palette.primary.main, theme.palette.primary.disabled]},
     {"action": "break", "desc": "全ての順番が決まるまで繰り返します"},
-    {"action": "break", "desc": "これでソートが完了しました"},
+    {"action": "break", "desc": "これでソートが完了しました\n以上がバブルソートの流れになります"},
   ];
   
   return (
