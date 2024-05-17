@@ -28,6 +28,7 @@ export default function Home() {
     {"action": "break", "desc": "バブルソートの説明をします"},
     {"action": "break", "desc": "バブルソートは隣り合う要素を比較して、順番が逆なら交換します\nこれを繰り返して、全ての要素が順番通りになるまで続けます"},
     {"action": "swap", "sel1": ".e1", "sel2": ".e2"},
+    {"action": "opacities", "sel": ".e1", "opacities": [0.5, 1]},
     // {"action": "flash", "sel": ".expl1", "color": "#F33", "loop": true},
     {"action": "break", "desc": "まずは左端から比較していきます\n30と20は30の方が大きいので交換します"},
     {"action": "swap-fail", "sel1": ".e1", "sel2": ".e3"},

@@ -119,10 +119,10 @@ export default function Home() {
         <div className="w-full px-20 py-24">
           {/*<p className="text-4xl py-5">ソートアルゴリズム</p>*/}
           <div className="text-center grid grid-cols-3 *:text-3xl *:bg-blue-300 *:border-2 *:border-blue-500 *:mx-10 *:my-5 *:p-5 *:rounded-xl">
-            <div><Link href={"/bubble-sort"}>バブルソート</Link></div>
-            <div><Link href={"/shaker-sort"}>シェーカーソート</Link></div>
-            <div><Link href={"/comb-sort"}>コムソート</Link></div>
-            <div><Link href={"/insertion-sort"}>挿入ソート</Link></div>
+            <div><Link href={"./bubble-sort"}>バブルソート</Link></div>
+            <div><Link href={"./shaker-sort"}>シェーカーソート</Link></div>
+            <div><Link href={"./comb-sort"}>コムソート</Link></div>
+            <div><Link href={"./insertion-sort"}>挿入ソート</Link></div>
           </div>
         </div>
 {/*
