@@ -13,7 +13,7 @@ export default function SortDescription(props) {
       borderRadius={1}
       boxShadow={3}
     >
-      <p className='grow mx-4 mt-2 md:mx-10 md:mt-10' style={{"white-space": "pre-wrap", "overflow-y": "scroll"}}>
+      <p className='grow mx-4 mt-2 md:mx-10 md:mt-10' style={{"whiteSpace": "pre-wrap", "overflowY": "scroll"}}>
         {props.children}
       </p>
       <div className="flex justify-center">
