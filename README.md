@@ -16,3 +16,4 @@
 - `"./comb-sort"` -> `"./comb-sort.html"`
 - `"./insertion-sort"` -> `"./insertion-sort.html"`
 - `"./shaker-sort"` -> `"./shaker-sort.html"`
+- `"/_next` -> `"./_next`
