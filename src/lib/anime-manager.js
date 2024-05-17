@@ -45,7 +45,11 @@ class AnimeManager {
   }
 
   async init() {
-    this.descCallback(this.animeSequence[0].desc);
+    if(this.animeSequence[0].action !== "break") {
+      await this.next();
+    } else {
+      this.descCallback(this.animeSequence[0].desc);
+    }
   }
 
   // 既に実行中のアニメーションをキャンセル
@@ -122,6 +126,12 @@ class AnimeManager {
         if(animeDict.action === "colors") {
           let tmpAnimeDict = JSON.parse(JSON.stringify(animeDict));
           tmpAnimeDict.colors = [animeDict.colors[0]];
+          reverseAnimeSequencePartial.push(tmpAnimeDict);
+          continue;
+        }
+        if(animeDict.action === "opacities") {
+          let tmpAnimeDict = JSON.parse(JSON.stringify(animeDict));
+          tmpAnimeDict.opacities = [animeDict.opacities[0]];
           reverseAnimeSequencePartial.push(tmpAnimeDict);
           continue;
         }
@@ -224,11 +234,27 @@ class AnimeManager {
             "loop": animeDict.loop || true,
           });
         }
-        totalDuration += duration;
+
+        if(animeDict.action === "spot") {
+          // spot
+        }
+
+        if(animeDict.action === "opacities") {
+          // opacities
+          const duration = rev ? 0 : animeDict.duration || 500;
+          translateResults.push({
+            "action": "opacities",
+            "sel": animeDict.sel,
+            "opacities": animeDict.opacities,
+            "duration": duration,
+            "startTime": totalDuration,
+          });
+          totalDuration += duration;
+        }
       }
       this.currentAnimeTotalDuration = totalDuration;
-      console.log(totalDuration)
-      console.log(this.currentAnimeTotalDuration);
+      // console.log(totalDuration)
+      // console.log(this.currentAnimeTotalDuration);
       translateResults.push(tmpTranslateResults);
     }
 
@@ -285,6 +311,11 @@ class AnimeManager {
       // flash
       if(translateResult.action === "flash") {
         this.animeFlashBgColor(translateResult.sel, translateResult.colors, translateResult.duration, translateResult.loop, translateResult.startTime,);
+      }
+
+      // opacities  
+      if(translateResult.action === "opacities") {
+        this.animeChangeOpacity(translateResult.sel, translateResult.opacities, translateResult.duration);
       }
     }
   }
@@ -539,6 +570,33 @@ class AnimeManager {
       backgroundColor: colors,
       duration: duration,
       loop: loop,
+    });
+  }
+
+  // // 表示するアニメーションを実行
+  // animeShowElement(selector, duration = 1000) {
+  //   this.animeChangeOpacity(selector, 1, duration);
+  // }
+
+  // 非表示にするアニメーションを実行
+  animeHideElement(selector, duration = 1000) {
+    this.animeChangeOpacity(selector, 0, duration);
+  }
+
+  animeLightenElement(selector, duration = 1000) {
+    this.animeChangeOpacity(selector, 0.5, duration);
+  }
+
+  animeDarkenElement(selector, duration = 1000) {
+    this.animeChangeOpacity(selector, 1, duration);
+  }
+
+  // 透明度を変更するアニメーションを実行
+  animeChangeOpacity(selector, opacities, duration = 1000) {
+    anime({
+      targets: selector,
+      opacity: opacities[opacities.length - 1],
+      duration: duration,
     });
   }
 }
