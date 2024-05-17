@@ -7,6 +7,7 @@ import SortBlock1 from "@/components/slide-parts/sort-block1";
 import SlidePage from "@/components/slide-page";
 
 import Link from "next/link";
+import { SlideHeader } from "@/components/slide-parts/slide-header";
 
 export default function Home() {
 
@@ -42,21 +43,15 @@ export default function Home() {
   
   return (
     <ThemeProvider theme={theme}>
-      <div className="flex m-3">
-        <div className="ml-4 text-3xl"><Link href={"/"}>←</Link></div>
-        <div className="m-auto  text-4xl">バブルソート</div>
-      </div>
-      <div className="w-5/6 justify-center m-auto">
-        <SlidePage animeSequence={animeSequence}>
-          <div className="flex h-full w-full sort-elements content-center">
-            <SortBlock1 percent={30} className="e1"/>
-            <SortBlock1 percent={20} className="e2"/>
-            <SortBlock1 percent={90} className="e3"/>
-            <SortBlock1 percent={10} className="e4"/>
-            <SortBlock1 percent={25} className="e5"/>
-          </div>
-        </SlidePage>
-      </div>
+      <SlidePage title="バブルソート" animeSequence={animeSequence}>
+        <div className="flex h-full w-full sort-elements content-center">
+          <SortBlock1 percent={30} className="e1"/>
+          <SortBlock1 percent={20} className="e2"/>
+          <SortBlock1 percent={90} className="e3"/>
+          <SortBlock1 percent={10} className="e4"/>
+          <SortBlock1 percent={25} className="e5"/>
+        </div>
+      </SlidePage>
     </ThemeProvider>
   );
 }

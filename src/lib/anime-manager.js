@@ -211,7 +211,7 @@ class AnimeManager {
         if(animeDict.action === "colors") {
           // colors
           // console.log(animeDict.colors);
-          let duration = rev ? 0 : animeDict.duration || 1000;
+          let duration = rev ? 0 : animeDict.duration || 300;
           translateResults.push({
             "action": "colors",
             "sel": animeDict.sel,

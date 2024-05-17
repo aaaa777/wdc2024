@@ -2,6 +2,7 @@
 
 import SampleNode1 from "@/components/slide-parts/sample-node1";
 import SortBlock1 from "@/components/slide-parts/sort-block1";
+import { SlideHeader } from "@/components/slide-parts/slide-header";
 
 import AnimeManager from "@/lib/anime-manager";
 import DescriptionManager from "@/lib/description-manager";
@@ -35,33 +36,58 @@ export default function SlidePage(props) {
   let inited = false;
   
   let [slideNumber, setSlideNumber] = useState(0);
-  const [slideDescription, setSlideDescription] = useState('読み込み中');
+  const [slideDescription, setSlideDescription] = useState('---');
+
+  const [isPrevDisabled, setPrevDisabled] = useState(true);
+  const [isNextDisabled, setNextDisabled] = useState(false);
   
   // https://stackoverflow.com/questions/73149606/why-is-my-usestate-variable-initialized-every-time-my-react-components-is-render
-  let [am, setAM] = useState(() => new AnimeManager(animeSequence));
+  const [am, setAM] = useState(() => new AnimeManager(animeSequence));
 
-  const pressNext = () => {
+  const updateButtonStatus = () => {
+    if(am.hasNext()) {
+      setNextDisabled(false);
+    }
+    else {
+      setNextDisabled(true);
+    }
+
+    if(am.hasPrev()) {
+      setPrevDisabled(false);
+    }
+    else {
+      setPrevDisabled(true);
+    }
+  }
+
+  const pressNext = async () => {
     if(am.hasNext()) {
       setSlideNumber(slideNumber + 1);
     }
-    am.next();
+    await am.next();
+    updateButtonStatus();
   }
   
-  const pressPrev = () => {
+  const pressPrev = async () => {
     if(am.hasPrev()) {
       setSlideNumber(slideNumber - 1);
     }
-    am.prev();
+    await am.prev();
+    updateButtonStatus();
   }
-  const pressTest = () => { am.animeChangeBgColor('.e1 graph-body', [undefined]);}
+
   const pressReplay = () => { am.replay(); }
-  const pressAuto = () => { am.auto(); }
+  const pressAuto = async () => {
+    await am.auto();
+    updateButtonStatus();
+  }
 
   useEffect(() => {
     // strict modeだとuseEffectが2回呼ばれる
     if (inited) return;
     am.setDescCallback(setSlideDescription);
     am.init();
+    updateButtonStatus();
     // document.querySelector('.test').onclick = () => {
     //   am.animeChangeBgColor('.e1 graph-body', '#F33');
     // }
@@ -73,8 +99,10 @@ export default function SlidePage(props) {
   const SlideAreaDiv = Styles.SlideAreaDiv;
 
   return (
-    <div className="w-full">
-      <div className="slide-area h-screen p-1 md:p-6">
+    <div className="w-5/6 h-screen flex flex-col justify-center m-auto">
+    <SlideHeader title={props.title} />
+    <div className="w-full grow">
+      <div className="slide-area p-1 h-full md:p-6">
         {/* 画面上半分 スライド部分 */}
         <div className="slide-video h-3/5 flex flex-col">
           <h1>{props.slideTitle}</h1>
@@ -90,6 +118,8 @@ export default function SlidePage(props) {
                 pressNextCallback={pressNext}
                 pressPrevCallback={pressPrev}
                 pressAutoCallback={pressAuto}
+                isPrevDisabled={isPrevDisabled}
+                isNextDisabled={isNextDisabled}
               >
                 {slideDescription}
               </SortDescription>
@@ -110,6 +140,7 @@ export default function SlidePage(props) {
           <button className="test p-1 m-1 border">Test</button>
         </div> */}
       </div>
+    </div>
     </div>
   );
 }

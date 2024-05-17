@@ -20,17 +20,20 @@ export default function SortDescription(props) {
         <input id="slide-range" type="range" value="0" className="w-5/6 h-2 m-5 bg-gray-200 rounded-lg appearance-none cursor-pointer slide-range" disabled />
       </div>
       <div className="flex justify-center">
-        <ButtonGroup className="h-14 mb-4">
-          <Button className="prev w-24 h-full" onClick={props.pressPrevCallback}>
+        <div className="h-14 mb-4">
+          <Button className="prev w-24 h-full" variant='contained'
+            onClick={props.pressPrevCallback} disabled={props.isPrevDisabled}>
             戻る
           </Button>
-          <Button className="prev w-24 h-full" onClick={props.pressAutoCallback}>
+          <Button className="prev w-24 h-full" variant='contained'
+            onClick={props.pressAutoCallback}>
             自動再生
           </Button>
-          <Button className="next w-24 h-full" onClick={props.pressNextCallback}>
+          <Button className="next w-24 h-full" variant='contained'
+            onClick={props.pressNextCallback} disabled={props.isNextDisabled}>
             次へ
           </Button>
-        </ButtonGroup>
+        </div>
       </div>
     </Box>
   );
