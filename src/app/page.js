@@ -1,5 +1,6 @@
 "use client";
 
+import SectionBlock from "@/components/index-parts/section-block";
 import { height, sizeHeight } from "@mui/system";
 import Link from "next/link";
 import React, {useEffect} from 'react'
@@ -103,18 +104,28 @@ export default function Home() {
       
       <div id="contents" className="absolute top-0 left-0 min-h-screen w-full flex flex-col">    
         
-        <div className="w-full md:mb-10 md:p-28 pt-6 text-center  bg-white bg-opacity-50">
-          <div className="text-6xl m-1 md:m-5">
-          {/*Algorithm Library*/}
-          Sort Museum
+        <div className="w-full h-screen flex flex-col justify-center md:p-28 pt-6 text-center  bg-white bg-opacity-60 shadow-lg">
+          <div className="flex flex-col">
+
+            <div className="text-6xl m-1 md:m-5">
+            {/*Algorithm Library*/}
+            Sort Museum
+            </div>
+            
+            <div className="text-3xl pt-4"> 
+            {/*様々なアルゴリズムをアニメーションで可視化しています*/}
+            様々なソートアルゴリズムを
+            </div>
+            <div className="text-3xl pb-4"> 
+            アニメーションで可視化
+            </div>
           </div>
-          
-          <div className="text-3xl py-4"> 
-          {/*様々なアルゴリズムをアニメーションで可視化しています*/}
-          様々なソートアルゴリズムをアニメーションで可視化しています
-          </div>
+          <div className="pt-20"></div>
         </div>
 
+        <SectionBlock>
+          <>a</>
+        </SectionBlock>
         
         <div className="w-full md:px-20 md:py-24">
           {/*<p className="text-4xl py-5">ソートアルゴリズム</p>*/}

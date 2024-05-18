@@ -6,8 +6,8 @@ const inter = Inter({ subsets: ["latin"] });
 const roboto = Roboto({ weight: "500", subsets: ["latin"]});
 
 export const metadata = {
-  title: "Test page 1",
-  description: "Test page 1 description",
+  title: "Sort Museum | ボゾソート",
+  description: "Sort Museum | ボゾソート",
 };
 
 export default function RootLayout({ children }) {
