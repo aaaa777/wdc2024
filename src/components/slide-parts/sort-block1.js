@@ -10,7 +10,7 @@ const SortBlock1 = (props) => {
     };
   }
   return (
-    <div className={`flex-1 content-end sample-node1 min-w-10 flex flex-col p-3 ${props.className}`}>
+    <div className={`flex-1 content-end sort-block1 min-w-10 flex flex-col p-3 ${props.className}`}>
       <div className="h-full content-end">
         <Box className={`graph`}
           border={0}
