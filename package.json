@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "hiu-build": "next build && node ./scripts/replace.js && node ./scripts/rename.js"
   },
   "dependencies": {
     "@emotion/react": "^11.11.4",
@@ -24,6 +25,7 @@
   },
   "devDependencies": {
     "postcss": "^8",
+    "replace-in-file": "^7.1.0",
     "tailwindcss": "^3.4.1"
   }
 }
