@@ -1,7 +1,6 @@
 "use client";
 
 import SectionBlock from "@/components/index-parts/section-block";
-import { height, sizeHeight } from "@mui/system";
 import Link from "next/link";
 import React, {useEffect} from 'react'
 
@@ -123,7 +122,7 @@ export default function Home() {
           <div className="pt-20"></div>
         </div>
 
-        <SectionBlock>
+        <SectionBlock title="バブルソート">
           <>a</>
         </SectionBlock>
         

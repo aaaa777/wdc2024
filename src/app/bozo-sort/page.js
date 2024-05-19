@@ -1,5 +1,6 @@
 "use client"
-import { ThemeProvider } from "@mui/system";
+import { ThemeProvider } from "@material-tailwind/react";
+// import { ThemeProvider } from "@mui/material";
 import theme from "@/lib/default-theme";
 
 import SortBlock1 from "@/components/slide-parts/sort-block1";
@@ -219,7 +220,7 @@ export default function Home() {
   ];
   
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider value={theme}>
       <SlidePage title="ボゾソート" animeSequence={animeSequence}>
         <div className="flex h-full w-full sort-elements content-center">
           <SortBlock1 percent={30} className="e1"/>

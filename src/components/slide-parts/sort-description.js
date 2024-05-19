@@ -1,5 +1,5 @@
-import { Box, Button, ButtonGroup } from '@mui/material';
-import { ThemeProvider } from '@mui/material';
+import { Box, ButtonGroup } from '@mui/material';
+import { Button } from '@material-tailwind/react';
 import theme from '@/lib/default-theme';
 import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
 import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
@@ -21,7 +21,7 @@ export default function SortDescription(props) {
       </div>
       <div className="flex justify-center">
         <div className="h-14 mb-4">
-          <Button className="prev w-24 h-full" variant='contained'
+          <Button className="prev w-24 h-full" 
             onClick={props.pressPrevCallback} disabled={props.isPrevDisabled}>
             戻る
           </Button>

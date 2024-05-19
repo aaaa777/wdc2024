@@ -1,5 +1,6 @@
 "use client"
-import { ThemeProvider } from "@mui/system";
+// import { ThemeProvider } from "@mui/system";
+import { ThemeProvider } from "@material-tailwind/react";
 import theme from "@/lib/default-theme";
 
 import SortBlock1 from "@/components/slide-parts/sort-block1";

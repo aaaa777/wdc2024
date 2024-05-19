@@ -1,13 +1,11 @@
 "use client"
-import { ThemeProvider } from "@mui/system";
+// import { ThemeProvider } from "@mui/system";
+import { ThemeProvider } from "@material-tailwind/react";
 import theme from "@/lib/default-theme";
 
 import SortBlock1 from "@/components/slide-parts/sort-block1";
 
 import SlidePage from "@/components/slide-page";
-
-import Link from "next/link";
-import { duration } from "@mui/material";
 
 export default function Home() {
 
