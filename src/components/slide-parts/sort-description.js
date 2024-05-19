@@ -30,7 +30,7 @@ export default function SortDescription(props) {
             onClick={props.pressPrevCallback} disabled={props.isPrevDisabled}>
             戻る
           </Button>
-          <Button className="replay w-24 h-full" variant='contained'
+          <Button className="replay w-24 h-full mx-4" variant='contained'
             onClick={props.pressReplayCallback} disabled={props.isReplayDisabled  }>
             リプレイ
           </Button>

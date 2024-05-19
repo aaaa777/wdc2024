@@ -111,19 +111,20 @@ export default function Home() {
             {/*Algorithm Library*/}
             Sort Museum
             </div>
-            
-            <div className="text-3xl pt-4"> 
-            {/*様々なアルゴリズムをアニメーションで可視化しています*/}
-            様々なソートアルゴリズムを
-            </div>
-            <div className="text-3xl pb-4"> 
-            アニメーションで可視化
-            </div>
+            {/* <div className="flex flex-col md:w-full"> */}
+              <div className="text-3xl pt-4"> 
+              {/*様々なアルゴリズムをアニメーションで可視化しています*/}
+              様々なソートアルゴリズムを
+              </div>
+              <div className="text-3xl pb-4"> 
+              アニメーションで可視化
+              </div>
+            {/* </div> */}
           </div>
           <div className="pt-20"></div>
         </div>
 
-        <SectionBlock>
+        <SectionBlock title="バブルソート">
           <>a</>
         </SectionBlock>
         

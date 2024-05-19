@@ -90,12 +90,12 @@ export default function SlidePage(props) {
   const SlideAreaDiv = Styles.SlideAreaDiv;
 
   return (
-    <div className="w-5/6 h-screen flex flex-col justify-center m-auto">
+    <div className="w-full h-screen flex flex-col justify-center">
     <SlideHeader
       title={props.title} pressAutoCallback={pressAuto}
     />
-    <div className="w-full grow">
-      <div className="slide-area p-1 h-full md:p-6">
+    <div className="w-full grow md:p-4">
+      <div className="slide-area p-1 w-5/6 h-full md:p-6 m-auto">
         {/* 画面上半分 スライド部分 */}
         <div className="slide-video h-3/5 flex flex-col">
           <h1>{props.slideTitle}</h1>
