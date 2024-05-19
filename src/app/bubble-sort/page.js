@@ -10,6 +10,7 @@ import Link from "next/link";
 import { SlideHeader } from "@/components/slide-parts/slide-header";
 
 export default function Home() {
+  const color = theme.palette.element;
 
   const animeSequence = [
     {"action": "break", "desc": "このページではバブルソートについて説明します"},
@@ -23,20 +24,20 @@ export default function Home() {
     {"action": "break", "desc": "同様に続けます\n90 > 10なので交換します"},
     {"action": "swap", "sel1": ".e3", "sel2": ".e5"},
     {"action": "break", "desc": "90 > 25なので交換します"},
-    {"action": "colors", "sel": ".e3 .graph", "colors": [theme.palette.primary.main, theme.palette.primary.disabled]},
+    {"action": "colors", "sel": ".e3 .graph", "colors": [color.normal, color.locked]},
     {"action": "break", "desc": "左から右へ比較を繰り返すことで1番大きい値が一番右に移動しました\nこれを繰り返して全ての要素を大きい順に並べます"},
     {"action": "swap-fail", "sel1": ".e1", "sel2": ".e2"},
     {"action": "swap", "sel1": ".e1", "sel2": ".e4"},
     {"action": "swap", "sel1": ".e1", "sel2": ".e5"},
     {"action": "break", "desc": "もう一度繰り返します"},
-    {"action": "colors", "sel": ".e1 .graph", "colors": [theme.palette.primary.main, theme.palette.primary.disabled]},
+    {"action": "colors", "sel": ".e1 .graph", "colors": [color.normal, color.locked]},
     {"action": "break", "desc": "これで2番目に大きい値が決まりました"},
     {"action": "swap", "sel1": ".e2", "sel2": ".e4"},
     {"action": "swap-fail", "sel1": ".e2", "sel2": ".e5"},
-    {"action": "colors", "sel": ".e5 .graph", "colors": [theme.palette.primary.main, theme.palette.primary.disabled]},
+    {"action": "colors", "sel": ".e5 .graph", "colors": [color.normal, color.locked]},
     {"action": "swap-fail", "sel1": ".e2", "sel2": ".e4"},
-    {"action": "colors", "sel": ".e2 .graph", "colors": [theme.palette.primary.main, theme.palette.primary.disabled]},
-    {"action": "colors", "sel": ".e4 .graph", "colors": [theme.palette.primary.main, theme.palette.primary.disabled]},
+    {"action": "colors", "sel": ".e2 .graph", "colors": [color.normal, color.locked]},
+    {"action": "colors", "sel": ".e4 .graph", "colors": [color.normal, color.locked]},
     {"action": "break", "desc": "全ての順番が決まるまで繰り返します"},
     {"action": "break", "desc": "これでソートが完了しました\n以上がバブルソートの流れになります"},
   ];

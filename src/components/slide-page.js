@@ -40,24 +40,15 @@ export default function SlidePage(props) {
 
   const [isPrevDisabled, setPrevDisabled] = useState(true);
   const [isNextDisabled, setNextDisabled] = useState(false);
-  
+  const [isReplayDisabled, setReplayDisabled] = useState(true);
+
   // https://stackoverflow.com/questions/73149606/why-is-my-usestate-variable-initialized-every-time-my-react-components-is-render
   const [am, setAM] = useState(() => new AnimeManager(animeSequence));
 
   const updateButtonStatus = () => {
-    if(am.hasNext()) {
-      setNextDisabled(false);
-    }
-    else {
-      setNextDisabled(true);
-    }
-
-    if(am.hasPrev()) {
-      setPrevDisabled(false);
-    }
-    else {
-      setPrevDisabled(true);
-    }
+    setNextDisabled(!am.hasNext());
+    setPrevDisabled(!am.hasPrev());
+    setReplayDisabled(!am.isReplayable());
   }
 
   const pressNext = async () => {
@@ -100,7 +91,9 @@ export default function SlidePage(props) {
 
   return (
     <div className="w-5/6 h-screen flex flex-col justify-center m-auto">
-    <SlideHeader title={props.title} />
+    <SlideHeader
+      title={props.title} pressAutoCallback={pressAuto}
+    />
     <div className="w-full grow">
       <div className="slide-area p-1 h-full md:p-6">
         {/* 画面上半分 スライド部分 */}
@@ -117,9 +110,11 @@ export default function SlidePage(props) {
               <SortDescription 
                 pressNextCallback={pressNext}
                 pressPrevCallback={pressPrev}
-                pressAutoCallback={pressAuto}
+                pressReplayCallback={pressReplay}
+
                 isPrevDisabled={isPrevDisabled}
                 isNextDisabled={isNextDisabled}
+                isReplayDisabled={isReplayDisabled}
               >
                 {slideDescription}
               </SortDescription>
