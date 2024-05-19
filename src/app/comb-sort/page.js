@@ -4,7 +4,7 @@ import theme from "@/lib/default-theme";
 
 import SortBlock1 from "@/components/slide-parts/sort-block1";
 
-import SlidePage from "@/components/slide-page";
+import SlidePage from "@/components/slide-parts/slide-page";
 
 import Link from "next/link";
 import { duration } from "@mui/material";

@@ -13,7 +13,7 @@ import { set } from "animejs";
 import styled, { css } from 'styled-components';
 
 import Button from '@mui/material/Button';
-import SortDescription from "./slide-parts/sort-description";
+import SortDescription from "./sort-description";
 import { Box, ThemeProvider } from "@mui/material";
 
 const Styles = {
