@@ -244,12 +244,12 @@ export default function Home() {
         </SectionBlock>
 
         <SectionBlock title="アルゴリズム一覧">
-          <SectionCard title="バブルソート" description={bubbleSortDesc} link={"./bubble-sort"} img1Link={'./thumb-bubble.png'} />
-          <SectionCard title="シェーカーソート" description={shakerSortDesc} link={"./shaker-sort"} img1Link={'./thumb-shaker.png'} />
-          <SectionCard title="コムソート" description={combSortDesc} link={"./comb-sort"} img1Link={'./thumb-comb.png'} />
-          <SectionCard title="ノームソート" description={gnomeSortDesc} link={"./gnome-sort"} img1Link={'./thumb-norm.png'} />
-          <SectionCard title="選択ソート" description={selectionSortDesc} link={"./selection-sort"} img1Link={'./thumb-selection.png'} />
-          <SectionCard title="ボゾソート" description={bozoSortDesc} link={"./bozo-sort"} />
+          <SectionCard title="バブルソート" description={bubbleSortDesc} link={"./bubble-sort"} img1Link={'./bubble-preview.gif'} />
+          <SectionCard title="シェーカーソート" description={shakerSortDesc} link={"./shaker-sort"} img1Link={'./shaker-preview.gif'} />
+          <SectionCard title="コムソート" description={combSortDesc} link={"./comb-sort"} img1Link={'./comb-preview.gif'} />
+          <SectionCard title="ノームソート" description={gnomeSortDesc} link={"./gnome-sort"} img1Link={'./gnome-preview.gif'} />
+          <SectionCard title="選択ソート" description={selectionSortDesc} link={"./selection-sort"} img1Link={'./selection-preview.gif'} />
+          <SectionCard title="ボゾソート" description={bozoSortDesc} link={"./bozo-sort"} img1Link={'./bozo-preview.gif'}/>
         </SectionBlock>
         
         {/* <div className="w-full md:px-20 md:py-24"> */}
