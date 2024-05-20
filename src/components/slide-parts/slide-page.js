@@ -13,7 +13,7 @@ import { set } from "animejs";
 import styled, { css } from 'styled-components';
 
 import Button from '@mui/material/Button';
-import SortDescription from "./slide-parts/sort-description";
+import SortDescription from "./sort-description";
 import { Box, ThemeProvider } from "@mui/material";
 
 const Styles = {
@@ -40,24 +40,15 @@ export default function SlidePage(props) {
 
   const [isPrevDisabled, setPrevDisabled] = useState(true);
   const [isNextDisabled, setNextDisabled] = useState(false);
-  
+  const [isReplayDisabled, setReplayDisabled] = useState(true);
+
   // https://stackoverflow.com/questions/73149606/why-is-my-usestate-variable-initialized-every-time-my-react-components-is-render
   const [am, setAM] = useState(() => new AnimeManager(animeSequence));
 
   const updateButtonStatus = () => {
-    if(am.hasNext()) {
-      setNextDisabled(false);
-    }
-    else {
-      setNextDisabled(true);
-    }
-
-    if(am.hasPrev()) {
-      setPrevDisabled(false);
-    }
-    else {
-      setPrevDisabled(true);
-    }
+    setNextDisabled(!am.hasNext());
+    setPrevDisabled(!am.hasPrev());
+    setReplayDisabled(!am.isReplayable());
   }
 
   const pressNext = async () => {
@@ -99,10 +90,12 @@ export default function SlidePage(props) {
   const SlideAreaDiv = Styles.SlideAreaDiv;
 
   return (
-    <div className="w-5/6 h-screen flex flex-col justify-center m-auto">
-    <SlideHeader title={props.title} />
-    <div className="w-full grow">
-      <div className="slide-area p-1 h-full md:p-6">
+    <div className="w-full h-screen flex flex-col justify-center">
+    <SlideHeader
+      title={props.title} pressAutoCallback={pressAuto}
+    />
+    <div className="w-full grow md:p-4">
+      <div className="slide-area p-1 w-5/6 h-full md:p-6 m-auto">
         {/* 画面上半分 スライド部分 */}
         <div className="slide-video h-3/5 flex flex-col">
           <h1>{props.slideTitle}</h1>
@@ -117,9 +110,11 @@ export default function SlidePage(props) {
               <SortDescription 
                 pressNextCallback={pressNext}
                 pressPrevCallback={pressPrev}
-                pressAutoCallback={pressAuto}
+                pressReplayCallback={pressReplay}
+
                 isPrevDisabled={isPrevDisabled}
                 isNextDisabled={isNextDisabled}
+                isReplayDisabled={isReplayDisabled}
               >
                 {slideDescription}
               </SortDescription>

@@ -321,6 +321,10 @@ class AnimeManager {
   }
 
   async auto() {
+    while(this.hasPrev()) {
+      await this.prev();
+    }
+    
     while(this.hasNext()) {
       await this.next();
     }
@@ -336,6 +340,13 @@ class AnimeManager {
 
   hasPrev() {
     return this.currentAnimeIndex > 0;
+  }
+
+  isReplayable() {
+    // 最初の要素の場合は多分breakなのでリプレイできない
+    if(!this.hasPrev()) return false
+    // 一つ前の要素がbreakの場合はアニメが挟まれてないのでリプレイできない
+    return this.animeSequence[this.currentAnimeIndex - 1].action !== 'break'
   }
 
   // プログレスバー位置を計算
