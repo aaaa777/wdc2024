@@ -15,11 +15,10 @@ import AnimeManager from "@/lib/anime-manager";
 // import { mpr1c } from "./layout";
 
 export default function Home() {
-  const aboutThisSite = "このサイトは、ソートアルゴリズムをアニメーションで可視化することで、アルゴリズムの理解を深めることを目的としています。"
-  const aboutAlgorithm = "アルゴリズムとは、ある問題を解決するための手順や方法のことです。ソートアルゴリズムは、データを昇順や降順に並べ替えるためのアルゴリズムです。"
-
-  const bubbleSortDesc = "バブルソートとは、隣り合う要素を比較して、順番が逆であれば交換する操作を繰り返すアルゴリズムです。"
-  const shakerSortDesc = "シェーカーソートとは、バブルソートの改良版で、片方向だけでなく、両方向からの交換を行うアルゴリズムです。"
+  const aboutThisSite = "アルゴリズムの理解は、プログラミングにおいて非常に重要です。\nしかし初学者が学ぶ途中でアルゴリズムをよく理解できず挫折してしまうこともあります。\nせっかく興味を持って学び始めたのに、難しいアルゴリズムによって挫折してしまうのはもったいないと思いませんか？\nもっと楽しく分かりやすく理解できたら、アルゴリズムの学習も楽しくなるのではないでしょうか。\nこのサイトは、ソートアルゴリズムをアニメーションで可視化することで、楽しくアルゴリズムの理解できるようにすることを目的としています。"
+  const aboutAlgorithm = "アルゴリズムとは、ある問題を解決するための手順や方法のことです。\nつまりソートアルゴリズムは、データを昇順や降順に並べ替えるためのアルゴリズムです。\nソートアルゴリズムには様々な種類があり、それぞれ特徴があります。\nこのサイトでは、その中でも代表的なソートアルゴリズムをアニメーションで可視化しています。"
+  const bubbleSortDesc = "バブルソートとは、隣り合う要素を比較して、順番が逆であれば交換する操作を繰り返すアルゴリズムです。\n最も単純なソートアルゴリズムの一つです。"
+  const shakerSortDesc = "シェーカーソートとは、バブルソートの改良版で、片方向だけでなく、両方向からの交換を行うアルゴリズムです。\nカクテルをシェイクする時のように比較する要素が左右に移動することからこの名前が付きました。"
   const combSortDesc = "コムソートとは、バブルソートの改良版で、隣り合う要素を比較するのではなく、離れた要素を比較するアルゴリズムです。"
   const gnomeSortDesc = "ノームソートとは、要素を前から順に見ていき、順番が逆であれば交換する操作を繰り返すアルゴリズムです。"
   const selectionSortDesc = "選択ソートとは、最小値を見つけ、それを先頭に移動させる操作を繰り返すアルゴリズムです。"
@@ -231,33 +230,25 @@ export default function Home() {
         <SectionBlock title="このサイトについて">
           <div className="section-description text-left md:px-6 pb-8 whitespace-pre-line">
             <p ref={ref} className={inView ? "animate-fade-in-bottom" : "opacity-0"}>
-            アルゴリズムの理解は、プログラミングにおいて非常に重要です。<br />
-            しかし初学者が学ぶ途中でアルゴリズムをよく理解できず挫折してしまうこともあります。<br />
-            せっかく興味を持って学び始めたのに、難しいアルゴリズムによって挫折してしまうのはもったいないと思いませんか？<br />
-            もっと楽しく分かりやすく理解できたら、アルゴリズムの学習も楽しくなるのではないでしょうか。<br />
-            このサイトは、ソートアルゴリズムをアニメーションで可視化することで、楽しくアルゴリズムの理解できるようにすることを目的としています。<br />
+              {aboutThisSite}
             </p>
           </div>
         </SectionBlock>
 
-        <SectionBlock title="このサイトについて">
+        <SectionBlock title="アルゴリズムとは">
           <div className="section-description text-left md:px-6 pb-8 whitespace-pre-line">
             <p ref={ref2} className={inView2 ? "animate-fade-in-bottom" : "opacity-0"}>
-            アルゴリズムの理解は、プログラミングにおいて非常に重要です。<br />
-            しかし初学者が学ぶ途中でアルゴリズムをよく理解できず挫折してしまうこともあります。<br />
-            せっかく興味を持って学び始めたのに、難しいアルゴリズムによって挫折してしまうのはもったいないと思いませんか？<br />
-            もっと楽しく分かりやすく理解できたら、アルゴリズムの学習も楽しくなるのではないでしょうか。<br />
-            このサイトは、ソートアルゴリズムをアニメーションで可視化することで、楽しくアルゴリズムの理解できるようにすることを目的としています。<br />
+              {aboutAlgorithm}
             </p>
           </div>
         </SectionBlock>
 
         <SectionBlock title="アルゴリズム一覧">
           <SectionCard title="バブルソート" description={bubbleSortDesc} link={"./bubble-sort"} img1Link={'./thumb-bubble.png'} />
-          <SectionCard title="シェーカーソート" description={shakerSortDesc} link={"./shaker-sort"} />
-          <SectionCard title="コムソート" description={combSortDesc} link={"./comb-sort"} />
-          <SectionCard title="ノームソート" description={gnomeSortDesc} link={"./gnome-sort"} />
-          <SectionCard title="選択ソート" description={selectionSortDesc} link={"./selection-sort"} />
+          <SectionCard title="シェーカーソート" description={shakerSortDesc} link={"./shaker-sort"} img1Link={'./thumb-shaker.png'} />
+          <SectionCard title="コムソート" description={combSortDesc} link={"./comb-sort"} img1Link={'./thumb-comb.png'} />
+          <SectionCard title="ノームソート" description={gnomeSortDesc} link={"./gnome-sort"} img1Link={'./thumb-norm.png'} />
+          <SectionCard title="選択ソート" description={selectionSortDesc} link={"./selection-sort"} img1Link={'./thumb-selection.png'} />
           <SectionCard title="ボゾソート" description={bozoSortDesc} link={"./bozo-sort"} />
         </SectionBlock>
         
