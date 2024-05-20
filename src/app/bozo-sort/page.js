@@ -14,7 +14,6 @@ export default function Home() {
     //テキストがないと最初の移動が適用されない
     // {"action": "break", "desc": "text"},
     {"action": "break", "desc": "このページではボゾソートについて説明します"},
-    {"action": "break", "desc": "ボゾソートはソートができるまで、ランダムに要素を入れ替えるアルゴリズムです"},
     {"action": "swap", "sel1": ".e4", "sel2": ".e3"},
     {"action": "swap", "sel1": ".e6", "sel2": ".e2"},
     {"action": "swap", "sel1": ".e6", "sel2": ".e2"},
@@ -215,6 +214,7 @@ export default function Home() {
     {"action": "swap", "sel1": ".e6", "sel2": ".e2"},
     {"action": "swap", "sel1": ".e5", "sel2": ".e1"},
     {"action": "swap", "sel1": ".e1", "sel2": ".e4"},
+    {"action": "break", "desc": "ボゾソートはソートができるまで、ランダムに要素を入れ替えるアルゴリズムです\nランダムに要素を入れ替えて続ければいつかは正しく並ぶ可能性があるだろうというアイディアに基づいています\nこのようなアイディアは無限の猿定理として知られています"},
     {"action": "break", "desc": "200回試行しましたが、ソートできませんでした。"},
   ];
   
