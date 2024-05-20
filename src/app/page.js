@@ -118,10 +118,10 @@ export default function Home() {
       
       <div id="contents" className="absolute top-0 left-0 min-h-screen w-full flex flex-col">    
         
-        <div className="w-full h-screen flex flex-col justify-center md:p-28 pt-6 text-center  bg-white bg-opacity-60 shadow-lg">
-          <div className="flex flex-col">
+        <div className="w-full h-screen flex flex-col md:p-28 pt-6 text-center  bg-white bg-opacity-60 shadow-lg">
+          <div className="flex flex-col grow justify-center">
 
-            <div className={`text-6xl m-1 md:m-5`}>
+            <div className={`text-6xl m-1 md:m-5 pt-10`}>
             {/*Algorithm Library*/}
             Sort Museum
             </div>
@@ -135,8 +135,25 @@ export default function Home() {
               </div>
             {/* </div> */}
           </div>
-          <div className="pt-20"></div>
+          <div className="flex-end pb-4">
+            <div className="text-3xl">
+              Scroll down
+            </div>
+            <div className="text-3xl">
+              ↓
+            </div>
+          </div>
         </div>
+
+        <SectionBlock title="このサイトについて">
+          <div className="section-description text-left md:px-6 pb-8 whitespace-pre-line">
+            アルゴリズムの理解は、プログラミングにおいて非常に重要です。<br />
+            しかし初学者が学ぶ途中でアルゴリズムをよく理解できず挫折してしまうこともあります。<br />
+            せっかく興味を持って学び始めたのに、難しいアルゴリズムによって挫折してしまうのはもったいないと思いませんか？<br />
+            もっと楽しく分かりやすく理解できたら、アルゴリズムの学習も楽しくなるのではないでしょうか。<br />
+            このサイトは、ソートアルゴリズムをアニメーションで可視化することで、楽しくアルゴリズムの理解できるようにすることを目的としています。<br />
+          </div>
+        </SectionBlock>
 
         <SectionBlock title="アルゴリズム一覧">
           <SectionCard title="バブルソート" description={bubbleSortDesc} link={"./bubble-sort"} img1Link={'./thumb-bubble.png'} />
@@ -147,7 +164,7 @@ export default function Home() {
           <SectionCard title="ボゾソート" description={bozoSortDesc} link={"./bozo-sort"} />
         </SectionBlock>
         
-        <div className="w-full md:px-20 md:py-24">
+        {/* <div className="w-full md:px-20 md:py-24"> */}
           {/*<p className="text-4xl py-5">ソートアルゴリズム</p>*/}
           {/* <div className="">
             
@@ -160,7 +177,7 @@ export default function Home() {
             <div><Link href={"./selection-sort"}>選択ソート</Link></div>
             <div><Link href={"./bozo-sort"}>ボゾソート</Link></div>
           </div> */}
-        </div>
+        {/* </div> */}
 {/*
         <div className="w-full px-20">
           <p className="text-4xl py-5">グラフアルゴリズム</p>
@@ -184,7 +201,7 @@ export default function Home() {
         </div>
   */}
         <div className="spacer grow"></div>
-        <div className="w-full mt-10 p-8 text-center bg-white bg-opacity-50">
+        <div className="flex-end w-full mt-10 p-8 text-center bg-white bg-opacity-50">
         © 2024 Yuma SAWAI, Sora KAMIMURA
         </div>
 
