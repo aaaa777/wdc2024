@@ -203,7 +203,7 @@ export default function Home() {
         <div className="w-full h-screen flex flex-col md:p-28 pt-6 text-center  bg-white bg-opacity-60 shadow-lg">
           <div className="flex flex-col grow justify-center">
 
-            <div className={`flex justify-center text-6xl m-1 md:m-5 pt-10`}>
+            <div className={`flex justify-center font-bold text-6xl m-1 md:m-5 pt-10`}>
             {/*Algorithm Library*/}
             <div className="title-large-s">S</div><div>ort</div><div>_</div><div className="title-large-m">M</div><div>u</div><div className="title-small-s">s</div><div>eu</div><div className="title-small-m">m</div>
             </div>
