@@ -1,11 +1,25 @@
 "use client";
 
+// import { M_PLUS_Rounded_1c } from "next/font/google";
+
 import SectionBlock from "@/components/index-parts/section-block";
+import SectionCard from "@/components/index-parts/section-card";
 import { height, sizeHeight } from "@mui/system";
 import Link from "next/link";
 import React, {useEffect} from 'react'
+// import { mpr1c } from "./layout";
 
 export default function Home() {
+  const aboutThisSite = "このサイトは、ソートアルゴリズムをアニメーションで可視化することで、アルゴリズムの理解を深めることを目的としています。"
+  const aboutAlgorithm = "アルゴリズムとは、ある問題を解決するための手順や方法のことです。ソートアルゴリズムは、データを昇順や降順に並べ替えるためのアルゴリズムです。"
+
+  const bubbleSortDesc = "バブルソートとは、隣り合う要素を比較して、順番が逆であれば交換する操作を繰り返すアルゴリズムです。"
+  const shakerSortDesc = "シェーカーソートとは、バブルソートの改良版で、片方向だけでなく、両方向からの交換を行うアルゴリズムです。"
+  const combSortDesc = "コムソートとは、バブルソートの改良版で、隣り合う要素を比較するのではなく、離れた要素を比較するアルゴリズムです。"
+  const gnomeSortDesc = "ノームソートとは、要素を前から順に見ていき、順番が逆であれば交換する操作を繰り返すアルゴリズムです。"
+  const selectionSortDesc = "選択ソートとは、最小値を見つけ、それを先頭に移動させる操作を繰り返すアルゴリズムです。"
+  const bozoSortDesc = "ボゾソートとは、ランダムに2つの要素を選び、順番が逆であれば交換する操作を繰り返すアルゴリズムです。"
+
   useEffect(() => {
     var livePatern = {
       canvas: null,
@@ -98,7 +112,7 @@ export default function Home() {
       }, []);
 
   return (
-    <main className="min-h-screen flex-col items-center justify-between">
+    <main className="min-h-screen flex flex-col items-center justify-between">
       <canvas id="canvas" className="relative h-full w-full">
       </canvas>
       
@@ -107,7 +121,7 @@ export default function Home() {
         <div className="w-full h-screen flex flex-col justify-center md:p-28 pt-6 text-center  bg-white bg-opacity-60 shadow-lg">
           <div className="flex flex-col">
 
-            <div className="text-6xl m-1 md:m-5">
+            <div className={`text-6xl m-1 md:m-5`}>
             {/*Algorithm Library*/}
             Sort Museum
             </div>
@@ -124,8 +138,13 @@ export default function Home() {
           <div className="pt-20"></div>
         </div>
 
-        <SectionBlock title="バブルソート">
-          <>a</>
+        <SectionBlock title="アルゴリズム一覧">
+          <SectionCard title="バブルソート" description={bubbleSortDesc} link={"./bubble-sort"} img1Link={'./thumb-bubble.png'} />
+          <SectionCard title="シェーカーソート" description={shakerSortDesc} link={"./shaker-sort"} />
+          <SectionCard title="コムソート" description={combSortDesc} link={"./comb-sort"} />
+          <SectionCard title="ノームソート" description={gnomeSortDesc} link={"./gnome-sort"} />
+          <SectionCard title="選択ソート" description={selectionSortDesc} link={"./selection-sort"} />
+          <SectionCard title="ボゾソート" description={bozoSortDesc} link={"./bozo-sort"} />
         </SectionBlock>
         
         <div className="w-full md:px-20 md:py-24">
@@ -133,14 +152,14 @@ export default function Home() {
           {/* <div className="">
             
           </div> */}
-          <div className="text-center grid md:grid-cols-3  *:text-3xl *:bg-blue-300 *:border-2 *:border-blue-500 *:mx-10 *:my-5 *:p-5 *:rounded-xl">
+          {/* <div className="text-center grid md:grid-cols-3  *:text-3xl *:bg-blue-300 *:border-2 *:border-blue-500 *:mx-10 *:my-5 *:p-5 *:rounded-xl">
             <div><Link href={"./bubble-sort"}>バブルソート</Link></div>
             <div><Link href={"./shaker-sort"}>シェーカーソート</Link></div>
             <div><Link href={"./comb-sort"}>コムソート</Link></div>
             <div><Link href={"./gnome-sort"}>ノームソート</Link></div>
             <div><Link href={"./selection-sort"}>選択ソート</Link></div>
             <div><Link href={"./bozo-sort"}>ボゾソート</Link></div>
-          </div>
+          </div> */}
         </div>
 {/*
         <div className="w-full px-20">
