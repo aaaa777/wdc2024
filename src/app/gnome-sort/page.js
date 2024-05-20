@@ -12,7 +12,7 @@ export default function Home() {
 
   const animeSequence = [
     //テキストがないと最初の移動が適用されない
-    {"action": "break", "desc": "text"},
+    {"action": "break", "desc": "このページではノームソートについて説明します"},
     {"action": "swap", "sel1": ".e2", "sel2": ".e1"},
     {"action": "swap-fail", "sel1": ".e3", "sel2": ".e1"},
     {"action": "swap", "sel1": ".e4", "sel2": ".e3"},
@@ -35,6 +35,7 @@ export default function Home() {
     {"action": "colors", "sel": ".e1 .graph", "colors": [theme.palette.primary.main, theme.palette.primary.disabled]},
     {"action": "colors", "sel": ".e7 .graph", "colors": [theme.palette.primary.main, theme.palette.primary.disabled]},
     {"action": "colors", "sel": ".e3 .graph", "colors": [theme.palette.primary.main, theme.palette.primary.disabled]},
+    {"action": "break", "desc": "これでソートが完了しました\n以上がノームソートの流れになります"},
   ];
   
   return (
