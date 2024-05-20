@@ -6,7 +6,12 @@ import SectionBlock from "@/components/index-parts/section-block";
 import SectionCard from "@/components/index-parts/section-card";
 import { height, sizeHeight } from "@mui/system";
 import Link from "next/link";
+import { useInView } from "react-intersection-observer";
 import React, {useEffect} from 'react'
+import { motion } from "framer-motion";
+import { css } from "@emotion/react";
+import anime from 'animejs/lib/anime.es.js';
+import AnimeManager from "@/lib/anime-manager";
 // import { mpr1c } from "./layout";
 
 export default function Home() {
@@ -20,7 +25,84 @@ export default function Home() {
   const selectionSortDesc = "選択ソートとは、最小値を見つけ、それを先頭に移動させる操作を繰り返すアルゴリズムです。"
   const bozoSortDesc = "ボゾソートとは、ランダムに2つの要素を選び、順番が逆であれば交換する操作を繰り返すアルゴリズムです。"
 
+  const am = new AnimeManager()
+
+  const [ref, inView] = useInView({
+    rootMargin: '-40%',
+    triggerOnce: true,
+  });
+
+  const [ref2, inView2] = useInView({
+    rootMargin: '-200px',
+    triggerOnce: true,
+  });
+
   useEffect(() => {
+    const mTranslate = am.calcSwapTranslate(".title-large-m", ".title-small-m");
+    const slideDuration = 700;
+    const smDelay = 500;
+    anime.timeline({
+      easing: 'easeInOutSine',
+      direction: 'alternate',
+      targets: ".title-large-m",
+      loop: true,
+    }).add({
+      translateX: mTranslate.translateAX,
+      duration: slideDuration,
+      delay: 500,
+    }).add({
+      duration: smDelay + slideDuration,
+    });
+
+    anime.timeline({
+      easing: 'easeInOutSine',
+      direction: 'alternate',
+      targets: ".title-small-m",
+      loop: true,
+    }).add({
+      translateX: mTranslate.translateBX,
+      duration: slideDuration,
+      delay: 500,
+    }).add({
+      duration: smDelay + slideDuration,
+    });
+
+    const sTranslate = am.calcSwapTranslate(".title-large-s", ".title-small-s");
+    anime.timeline({
+      easing: 'easeInOutSine',
+      direction: 'alternate',
+      targets: ".title-large-s",
+      loop: true,
+    }).add({
+      duration: smDelay + slideDuration,
+    }).add({
+      translateX: sTranslate.translateAX,
+      duration: slideDuration,
+      delay: 500,
+    });
+
+    anime.timeline({
+      easing: 'easeInOutSine',
+      direction: 'alternate',
+      targets: ".title-small-s",
+      loop: true,
+    }).add({
+      duration: smDelay + slideDuration,
+    }).add({
+      translateX: sTranslate.translateBX,
+      duration: slideDuration,
+      delay: 500,
+    }); 
+
+    // anime({
+    //   targets: ".scroll-down",
+    //   translateY: -10,
+    //   duration: 1000,
+    //   direction: 'alternate',
+    //   loop: true
+    // });
+    
+
     var livePatern = {
       canvas: null,
       contents: null,
@@ -109,10 +191,11 @@ export default function Home() {
     };
     
     !function(){livePatern.init();}()
-      }, []);
+  }, []);
 
   return (
     <main className="min-h-screen flex flex-col items-center justify-between">
+      {/* <SlideIn /> */}
       <canvas id="canvas" className="relative h-full w-full">
       </canvas>
       
@@ -121,9 +204,9 @@ export default function Home() {
         <div className="w-full h-screen flex flex-col md:p-28 pt-6 text-center  bg-white bg-opacity-60 shadow-lg">
           <div className="flex flex-col grow justify-center">
 
-            <div className={`text-6xl m-1 md:m-5 pt-10`}>
+            <div className={`flex justify-center text-6xl m-1 md:m-5 pt-10`}>
             {/*Algorithm Library*/}
-            Sort Museum
+            <div className="title-large-s">S</div><div>ort</div><div>_</div><div className="title-large-m">M</div><div>u</div><div className="title-small-s">s</div><div>eu</div><div className="title-small-m">m</div>
             </div>
             {/* <div className="flex flex-col md:w-full"> */}
               <div className="text-3xl pt-4"> 
@@ -135,7 +218,7 @@ export default function Home() {
               </div>
             {/* </div> */}
           </div>
-          <div className="flex-end pb-4">
+          <div className="scroll-down flex-end pb-4">
             <div className="text-3xl">
               Scroll down
             </div>
@@ -147,11 +230,25 @@ export default function Home() {
 
         <SectionBlock title="このサイトについて">
           <div className="section-description text-left md:px-6 pb-8 whitespace-pre-line">
+            <p ref={ref} className={inView ? "animate-fade-in-bottom" : "opacity-0"}>
             アルゴリズムの理解は、プログラミングにおいて非常に重要です。<br />
             しかし初学者が学ぶ途中でアルゴリズムをよく理解できず挫折してしまうこともあります。<br />
             せっかく興味を持って学び始めたのに、難しいアルゴリズムによって挫折してしまうのはもったいないと思いませんか？<br />
             もっと楽しく分かりやすく理解できたら、アルゴリズムの学習も楽しくなるのではないでしょうか。<br />
             このサイトは、ソートアルゴリズムをアニメーションで可視化することで、楽しくアルゴリズムの理解できるようにすることを目的としています。<br />
+            </p>
+          </div>
+        </SectionBlock>
+
+        <SectionBlock title="このサイトについて">
+          <div className="section-description text-left md:px-6 pb-8 whitespace-pre-line">
+            <p ref={ref2} className={inView2 ? "animate-fade-in-bottom" : "opacity-0"}>
+            アルゴリズムの理解は、プログラミングにおいて非常に重要です。<br />
+            しかし初学者が学ぶ途中でアルゴリズムをよく理解できず挫折してしまうこともあります。<br />
+            せっかく興味を持って学び始めたのに、難しいアルゴリズムによって挫折してしまうのはもったいないと思いませんか？<br />
+            もっと楽しく分かりやすく理解できたら、アルゴリズムの学習も楽しくなるのではないでしょうか。<br />
+            このサイトは、ソートアルゴリズムをアニメーションで可視化することで、楽しくアルゴリズムの理解できるようにすることを目的としています。<br />
+            </p>
           </div>
         </SectionBlock>
 
