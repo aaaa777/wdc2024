@@ -43,10 +43,10 @@ const SectionCard = (props) => {
         >
           <CardContent sx={{ flex: '1 0 auto' }}
           >
-            <Typography component="div" variant="h5">
+            <Typography component="div" variant="h5" pb={4}>
               {props.title}
             </Typography>
-            <Typography variant="body1" color="text.secondary">
+            <Typography variant="body1" color="text.secondary" whiteSpace="pre-wrap">
               {props.description}
             </Typography>
           </CardContent>

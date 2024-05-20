@@ -6,21 +6,102 @@ import SectionBlock from "@/components/index-parts/section-block";
 import SectionCard from "@/components/index-parts/section-card";
 import { height, sizeHeight } from "@mui/system";
 import Link from "next/link";
+import { useInView } from "react-intersection-observer";
 import React, {useEffect} from 'react'
+import { motion } from "framer-motion";
+import { css } from "@emotion/react";
+import anime from 'animejs/lib/anime.es.js';
+import AnimeManager from "@/lib/anime-manager";
 // import { mpr1c } from "./layout";
 
 export default function Home() {
-  const aboutThisSite = "このサイトは、ソートアルゴリズムをアニメーションで可視化することで、アルゴリズムの理解を深めることを目的としています。"
-  const aboutAlgorithm = "アルゴリズムとは、ある問題を解決するための手順や方法のことです。ソートアルゴリズムは、データを昇順や降順に並べ替えるためのアルゴリズムです。"
-
-  const bubbleSortDesc = "バブルソートとは、隣り合う要素を比較して、順番が逆であれば交換する操作を繰り返すアルゴリズムです。"
-  const shakerSortDesc = "シェーカーソートとは、バブルソートの改良版で、片方向だけでなく、両方向からの交換を行うアルゴリズムです。"
+  const aboutThisSite = "アルゴリズムの理解は、プログラミングにおいて非常に重要です。\nしかし初学者が学ぶ途中でアルゴリズムをよく理解できず挫折してしまうこともあります。\nせっかく興味を持って学び始めたのに、難しいアルゴリズムによって挫折してしまうのはもったいないと思いませんか？\nもっと楽しく分かりやすく理解できたら、アルゴリズムの学習も楽しくなるのではないでしょうか。\nこのサイトは、ソートアルゴリズムをアニメーションで可視化することで、楽しくアルゴリズムの理解できるようにすることを目的としています。"
+  const aboutAlgorithm = "アルゴリズムとは、ある問題を解決するための手順や方法のことです。\nつまりソートアルゴリズムは、データを昇順や降順に並べ替えるためのアルゴリズムです。\nソートアルゴリズムには様々な種類があり、それぞれ特徴があります。\nこのサイトでは、その中でも代表的なソートアルゴリズムをアニメーションで可視化しています。"
+  const bubbleSortDesc = "バブルソートとは、隣り合う要素を比較して、順番が逆であれば交換する操作を繰り返すアルゴリズムです。\n最も単純なソートアルゴリズムの一つです。"
+  const shakerSortDesc = "シェーカーソートとは、バブルソートの改良版で、片方向だけでなく、両方向からの交換を行うアルゴリズムです。\nカクテルをシェイクする時のように比較する要素が左右に移動することからこの名前が付きました。"
   const combSortDesc = "コムソートとは、バブルソートの改良版で、隣り合う要素を比較するのではなく、離れた要素を比較するアルゴリズムです。"
   const gnomeSortDesc = "ノームソートとは、要素を前から順に見ていき、順番が逆であれば交換する操作を繰り返すアルゴリズムです。"
   const selectionSortDesc = "選択ソートとは、最小値を見つけ、それを先頭に移動させる操作を繰り返すアルゴリズムです。"
   const bozoSortDesc = "ボゾソートとは、ランダムに2つの要素を選び、順番が逆であれば交換する操作を繰り返すアルゴリズムです。"
 
+  const am = new AnimeManager()
+
+  const [ref, inView] = useInView({
+    rootMargin: '-40%',
+    triggerOnce: true,
+  });
+
+  const [ref2, inView2] = useInView({
+    rootMargin: '-200px',
+    triggerOnce: true,
+  });
+
   useEffect(() => {
+    const mTranslate = am.calcSwapTranslate(".title-large-m", ".title-small-m");
+    const slideDuration = 700;
+    const smDelay = 500;
+    anime.timeline({
+      easing: 'easeInOutSine',
+      direction: 'alternate',
+      targets: ".title-large-m",
+      loop: true,
+    }).add({
+      translateX: mTranslate.translateAX,
+      duration: slideDuration,
+      delay: 500,
+    }).add({
+      duration: smDelay + slideDuration,
+    });
+
+    anime.timeline({
+      easing: 'easeInOutSine',
+      direction: 'alternate',
+      targets: ".title-small-m",
+      loop: true,
+    }).add({
+      translateX: mTranslate.translateBX,
+      duration: slideDuration,
+      delay: 500,
+    }).add({
+      duration: smDelay + slideDuration,
+    });
+
+    const sTranslate = am.calcSwapTranslate(".title-large-s", ".title-small-s");
+    anime.timeline({
+      easing: 'easeInOutSine',
+      direction: 'alternate',
+      targets: ".title-large-s",
+      loop: true,
+    }).add({
+      duration: smDelay + slideDuration,
+    }).add({
+      translateX: sTranslate.translateAX,
+      duration: slideDuration,
+      delay: 500,
+    });
+
+    anime.timeline({
+      easing: 'easeInOutSine',
+      direction: 'alternate',
+      targets: ".title-small-s",
+      loop: true,
+    }).add({
+      duration: smDelay + slideDuration,
+    }).add({
+      translateX: sTranslate.translateBX,
+      duration: slideDuration,
+      delay: 500,
+    }); 
+
+    // anime({
+    //   targets: ".scroll-down",
+    //   translateY: -10,
+    //   duration: 1000,
+    //   direction: 'alternate',
+    //   loop: true
+    // });
+    
+
     var livePatern = {
       canvas: null,
       contents: null,
@@ -109,10 +190,11 @@ export default function Home() {
     };
     
     !function(){livePatern.init();}()
-      }, []);
+  }, []);
 
   return (
     <main className="min-h-screen flex flex-col items-center justify-between">
+      {/* <SlideIn /> */}
       <canvas id="canvas" className="relative h-full w-full">
       </canvas>
       
@@ -121,9 +203,9 @@ export default function Home() {
         <div className="w-full h-screen flex flex-col md:p-28 pt-6 text-center  bg-white bg-opacity-60 shadow-lg">
           <div className="flex flex-col grow justify-center">
 
-            <div className={`text-6xl m-1 md:m-5 pt-10`}>
+            <div className={`flex justify-center text-6xl m-1 md:m-5 pt-10`}>
             {/*Algorithm Library*/}
-            Sort Museum
+            <div className="title-large-s">S</div><div>ort</div><div>_</div><div className="title-large-m">M</div><div>u</div><div className="title-small-s">s</div><div>eu</div><div className="title-small-m">m</div>
             </div>
             {/* <div className="flex flex-col md:w-full"> */}
               <div className="text-3xl pt-4"> 
@@ -135,7 +217,7 @@ export default function Home() {
               </div>
             {/* </div> */}
           </div>
-          <div className="flex-end pb-4">
+          <div className="scroll-down flex-end pb-4">
             <div className="text-3xl">
               Scroll down
             </div>
@@ -147,20 +229,26 @@ export default function Home() {
 
         <SectionBlock title="このサイトについて">
           <div className="section-description text-left md:px-6 pb-8 whitespace-pre-line">
-            アルゴリズムの理解は、プログラミングにおいて非常に重要です。<br />
-            しかし初学者が学ぶ途中でアルゴリズムをよく理解できず挫折してしまうこともあります。<br />
-            せっかく興味を持って学び始めたのに、難しいアルゴリズムによって挫折してしまうのはもったいないと思いませんか？<br />
-            もっと楽しく分かりやすく理解できたら、アルゴリズムの学習も楽しくなるのではないでしょうか。<br />
-            このサイトは、ソートアルゴリズムをアニメーションで可視化することで、楽しくアルゴリズムの理解できるようにすることを目的としています。<br />
+            <p ref={ref} className={inView ? "animate-fade-in-bottom" : "opacity-0"}>
+              {aboutThisSite}
+            </p>
+          </div>
+        </SectionBlock>
+
+        <SectionBlock title="アルゴリズムとは">
+          <div className="section-description text-left md:px-6 pb-8 whitespace-pre-line">
+            <p ref={ref2} className={inView2 ? "animate-fade-in-bottom" : "opacity-0"}>
+              {aboutAlgorithm}
+            </p>
           </div>
         </SectionBlock>
 
         <SectionBlock title="アルゴリズム一覧">
           <SectionCard title="バブルソート" description={bubbleSortDesc} link={"./bubble-sort"} img1Link={'./thumb-bubble.png'} />
-          <SectionCard title="シェーカーソート" description={shakerSortDesc} link={"./shaker-sort"} />
-          <SectionCard title="コムソート" description={combSortDesc} link={"./comb-sort"} />
-          <SectionCard title="ノームソート" description={gnomeSortDesc} link={"./gnome-sort"} />
-          <SectionCard title="選択ソート" description={selectionSortDesc} link={"./selection-sort"} />
+          <SectionCard title="シェーカーソート" description={shakerSortDesc} link={"./shaker-sort"} img1Link={'./thumb-shaker.png'} />
+          <SectionCard title="コムソート" description={combSortDesc} link={"./comb-sort"} img1Link={'./thumb-comb.png'} />
+          <SectionCard title="ノームソート" description={gnomeSortDesc} link={"./gnome-sort"} img1Link={'./thumb-norm.png'} />
+          <SectionCard title="選択ソート" description={selectionSortDesc} link={"./selection-sort"} img1Link={'./thumb-selection.png'} />
           <SectionCard title="ボゾソート" description={bozoSortDesc} link={"./bozo-sort"} />
         </SectionBlock>
         
