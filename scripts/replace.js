@@ -6,7 +6,6 @@ const options = {
   files: [
     "./out/*.html",
     "./out/**/*.js",
-    "./out/**/*.css",
   ], // 置換を実行したいファイルのパスを設定
   from: [
     /\/_next/g,
@@ -17,6 +16,7 @@ const options = {
     /\"\.\/selection-sort"/g,
     /\"\.\/shaker-sort"/g,
     /crossorigin=""/g,
+    /\/favicon\.ico/g,
   ], // 置換対象の文字を正規表現で設定
   to: [
     "./_next",
@@ -27,6 +27,7 @@ const options = {
     "\"\.\/selection-sort\.html\"",
     "\"\.\/shaker-sort\.html\"",
     "",
+    "./favicon.ico",
   ], // 置換後の文字を設定
 };
 
@@ -37,9 +38,11 @@ const options2 = {
   from: [
     // css font
     /\/_next\/static\/media/g,
+    /\.\/_next\/static\/media/g
   ], // 置換対象の文字を正規表現で設定
   to: [
     // css font
+    "../media",
     "../media",
   ], // 置換後の文字を設定
 };
